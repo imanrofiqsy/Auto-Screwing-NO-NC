@@ -32,15 +32,8 @@ Partial Class SettingForm
         Me.lbl_user = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.GroupBox7 = New System.Windows.Forms.GroupBox()
-        Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
+        Me.rtb_setting = New System.Windows.Forms.RichTextBox()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
-        Me.Label15 = New System.Windows.Forms.Label()
-        Me.Button7 = New System.Windows.Forms.Button()
-        Me.Button8 = New System.Windows.Forms.Button()
-        Me.TextBox8 = New System.Windows.Forms.TextBox()
-        Me.Label16 = New System.Windows.Forms.Label()
-        Me.TextBox9 = New System.Windows.Forms.TextBox()
-        Me.Label17 = New System.Windows.Forms.Label()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Button5 = New System.Windows.Forms.Button()
@@ -49,29 +42,21 @@ Partial Class SettingForm
         Me.Label13 = New System.Windows.Forms.Label()
         Me.TextBox7 = New System.Windows.Forms.TextBox()
         Me.Label14 = New System.Windows.Forms.Label()
-        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
-        Me.Label11 = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.btn_disconnect_plc_nc = New System.Windows.Forms.Button()
+        Me.btn_connect_plc_nc = New System.Windows.Forms.Button()
+        Me.txt_port_plc_nc = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.txt_ip_plc_nc = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.btn_disconnect_plc = New System.Windows.Forms.Button()
-        Me.btn_connect_plc = New System.Windows.Forms.Button()
-        Me.txt_Port_PLC = New System.Windows.Forms.TextBox()
+        Me.lbl_plc_status = New System.Windows.Forms.Label()
+        Me.btn_disconnect_plc_no = New System.Windows.Forms.Button()
+        Me.btn_connect_plc_no = New System.Windows.Forms.Button()
+        Me.txt_Port_PLC_NO = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.txt_IP_PLC = New System.Windows.Forms.TextBox()
+        Me.txt_IP_PLC_NO = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.btn_login = New System.Windows.Forms.Button()
         Me.pb_status_mc = New System.Windows.Forms.PictureBox()
@@ -79,11 +64,18 @@ Partial Class SettingForm
         Me.btn_save = New System.Windows.Forms.Button()
         Me.btn_home = New System.Windows.Forms.Button()
         Me.pb_status_bar = New System.Windows.Forms.PictureBox()
+        Me.txt_database = New System.Windows.Forms.TextBox()
+        Me.txt_username = New System.Windows.Forms.TextBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.txt_password = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.txt_hostname = New System.Windows.Forms.TextBox()
+        Me.Label17 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox7.SuspendLayout()
         Me.GroupBox6.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
-        Me.GroupBox4.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.pb_status_mc, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -170,7 +162,6 @@ Partial Class SettingForm
         Me.GroupBox1.Controls.Add(Me.GroupBox7)
         Me.GroupBox1.Controls.Add(Me.GroupBox6)
         Me.GroupBox1.Controls.Add(Me.GroupBox5)
-        Me.GroupBox1.Controls.Add(Me.GroupBox4)
         Me.GroupBox1.Controls.Add(Me.GroupBox3)
         Me.GroupBox1.Controls.Add(Me.GroupBox2)
         Me.GroupBox1.Location = New System.Drawing.Point(138, 163)
@@ -181,7 +172,7 @@ Partial Class SettingForm
         '
         'GroupBox7
         '
-        Me.GroupBox7.Controls.Add(Me.RichTextBox1)
+        Me.GroupBox7.Controls.Add(Me.rtb_setting)
         Me.GroupBox7.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox7.Location = New System.Drawing.Point(76, 320)
         Me.GroupBox7.Name = "GroupBox7"
@@ -190,92 +181,31 @@ Partial Class SettingForm
         Me.GroupBox7.TabStop = False
         Me.GroupBox7.Text = "Status"
         '
-        'RichTextBox1
+        'rtb_setting
         '
-        Me.RichTextBox1.Location = New System.Drawing.Point(8, 25)
-        Me.RichTextBox1.Name = "RichTextBox1"
-        Me.RichTextBox1.Size = New System.Drawing.Size(402, 138)
-        Me.RichTextBox1.TabIndex = 0
-        Me.RichTextBox1.Text = ""
+        Me.rtb_setting.Location = New System.Drawing.Point(8, 25)
+        Me.rtb_setting.Name = "rtb_setting"
+        Me.rtb_setting.Size = New System.Drawing.Size(402, 138)
+        Me.rtb_setting.TabIndex = 0
+        Me.rtb_setting.Text = ""
         '
         'GroupBox6
         '
-        Me.GroupBox6.Controls.Add(Me.Label15)
-        Me.GroupBox6.Controls.Add(Me.Button7)
-        Me.GroupBox6.Controls.Add(Me.Button8)
-        Me.GroupBox6.Controls.Add(Me.TextBox8)
+        Me.GroupBox6.Controls.Add(Me.txt_database)
+        Me.GroupBox6.Controls.Add(Me.txt_username)
+        Me.GroupBox6.Controls.Add(Me.Label9)
         Me.GroupBox6.Controls.Add(Me.Label16)
-        Me.GroupBox6.Controls.Add(Me.TextBox9)
+        Me.GroupBox6.Controls.Add(Me.txt_password)
+        Me.GroupBox6.Controls.Add(Me.Label5)
+        Me.GroupBox6.Controls.Add(Me.txt_hostname)
         Me.GroupBox6.Controls.Add(Me.Label17)
         Me.GroupBox6.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox6.Location = New System.Drawing.Point(928, 88)
+        Me.GroupBox6.Location = New System.Drawing.Point(712, 88)
         Me.GroupBox6.Name = "GroupBox6"
-        Me.GroupBox6.Size = New System.Drawing.Size(206, 186)
+        Me.GroupBox6.Size = New System.Drawing.Size(247, 186)
         Me.GroupBox6.TabIndex = 1
         Me.GroupBox6.TabStop = False
-        Me.GroupBox6.Text = "Instrument"
-        '
-        'Label15
-        '
-        Me.Label15.BackColor = System.Drawing.Color.DarkRed
-        Me.Label15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label15.ForeColor = System.Drawing.Color.White
-        Me.Label15.Location = New System.Drawing.Point(10, 153)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(179, 23)
-        Me.Label15.TabIndex = 3
-        Me.Label15.Text = "Closed"
-        Me.Label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Button7
-        '
-        Me.Button7.Location = New System.Drawing.Point(101, 107)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(88, 34)
-        Me.Button7.TabIndex = 2
-        Me.Button7.Text = "Open"
-        Me.Button7.UseVisualStyleBackColor = True
-        '
-        'Button8
-        '
-        Me.Button8.Location = New System.Drawing.Point(10, 107)
-        Me.Button8.Name = "Button8"
-        Me.Button8.Size = New System.Drawing.Size(75, 34)
-        Me.Button8.TabIndex = 2
-        Me.Button8.Text = "Open"
-        Me.Button8.UseVisualStyleBackColor = True
-        '
-        'TextBox8
-        '
-        Me.TextBox8.Location = New System.Drawing.Point(62, 65)
-        Me.TextBox8.Name = "TextBox8"
-        Me.TextBox8.Size = New System.Drawing.Size(127, 26)
-        Me.TextBox8.TabIndex = 1
-        '
-        'Label16
-        '
-        Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(6, 68)
-        Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(35, 20)
-        Me.Label16.TabIndex = 0
-        Me.Label16.Text = "Port"
-        '
-        'TextBox9
-        '
-        Me.TextBox9.Location = New System.Drawing.Point(62, 33)
-        Me.TextBox9.Name = "TextBox9"
-        Me.TextBox9.Size = New System.Drawing.Size(127, 26)
-        Me.TextBox9.TabIndex = 1
-        '
-        'Label17
-        '
-        Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(6, 36)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(41, 20)
-        Me.Label17.TabIndex = 0
-        Me.Label17.Text = "Baud"
+        Me.GroupBox6.Text = "Database"
         '
         'GroupBox5
         '
@@ -287,7 +217,7 @@ Partial Class SettingForm
         Me.GroupBox5.Controls.Add(Me.TextBox7)
         Me.GroupBox5.Controls.Add(Me.Label14)
         Me.GroupBox5.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox5.Location = New System.Drawing.Point(716, 88)
+        Me.GroupBox5.Location = New System.Drawing.Point(500, 88)
         Me.GroupBox5.Name = "GroupBox5"
         Me.GroupBox5.Size = New System.Drawing.Size(206, 186)
         Me.GroupBox5.TabIndex = 2
@@ -356,93 +286,14 @@ Partial Class SettingForm
         Me.Label14.TabIndex = 0
         Me.Label14.Text = "Baud"
         '
-        'GroupBox4
-        '
-        Me.GroupBox4.Controls.Add(Me.Label9)
-        Me.GroupBox4.Controls.Add(Me.Button3)
-        Me.GroupBox4.Controls.Add(Me.Button4)
-        Me.GroupBox4.Controls.Add(Me.TextBox4)
-        Me.GroupBox4.Controls.Add(Me.Label10)
-        Me.GroupBox4.Controls.Add(Me.TextBox5)
-        Me.GroupBox4.Controls.Add(Me.Label11)
-        Me.GroupBox4.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox4.Location = New System.Drawing.Point(500, 88)
-        Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(206, 186)
-        Me.GroupBox4.TabIndex = 3
-        Me.GroupBox4.TabStop = False
-        Me.GroupBox4.Text = "Laser"
-        '
-        'Label9
-        '
-        Me.Label9.BackColor = System.Drawing.Color.DarkRed
-        Me.Label9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label9.ForeColor = System.Drawing.Color.White
-        Me.Label9.Location = New System.Drawing.Point(10, 153)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(179, 23)
-        Me.Label9.TabIndex = 3
-        Me.Label9.Text = "Disconnected"
-        Me.Label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Button3
-        '
-        Me.Button3.Location = New System.Drawing.Point(101, 107)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(88, 34)
-        Me.Button3.TabIndex = 2
-        Me.Button3.Text = "Disconnect"
-        Me.Button3.UseVisualStyleBackColor = True
-        '
-        'Button4
-        '
-        Me.Button4.Location = New System.Drawing.Point(10, 107)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(75, 34)
-        Me.Button4.TabIndex = 2
-        Me.Button4.Text = "Connect"
-        Me.Button4.UseVisualStyleBackColor = True
-        '
-        'TextBox4
-        '
-        Me.TextBox4.Location = New System.Drawing.Point(62, 65)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(127, 26)
-        Me.TextBox4.TabIndex = 1
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(6, 68)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(35, 20)
-        Me.Label10.TabIndex = 0
-        Me.Label10.Text = "Port"
-        '
-        'TextBox5
-        '
-        Me.TextBox5.Location = New System.Drawing.Point(62, 33)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(127, 26)
-        Me.TextBox5.TabIndex = 1
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(6, 36)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(22, 20)
-        Me.Label11.TabIndex = 0
-        Me.Label11.Text = "IP"
-        '
         'GroupBox3
         '
         Me.GroupBox3.Controls.Add(Me.Label6)
-        Me.GroupBox3.Controls.Add(Me.Button1)
-        Me.GroupBox3.Controls.Add(Me.Button2)
-        Me.GroupBox3.Controls.Add(Me.TextBox2)
+        Me.GroupBox3.Controls.Add(Me.btn_disconnect_plc_nc)
+        Me.GroupBox3.Controls.Add(Me.btn_connect_plc_nc)
+        Me.GroupBox3.Controls.Add(Me.txt_port_plc_nc)
         Me.GroupBox3.Controls.Add(Me.Label7)
-        Me.GroupBox3.Controls.Add(Me.TextBox3)
+        Me.GroupBox3.Controls.Add(Me.txt_ip_plc_nc)
         Me.GroupBox3.Controls.Add(Me.Label8)
         Me.GroupBox3.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox3.Location = New System.Drawing.Point(288, 88)
@@ -450,7 +301,7 @@ Partial Class SettingForm
         Me.GroupBox3.Size = New System.Drawing.Size(206, 186)
         Me.GroupBox3.TabIndex = 4
         Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "Multimeter"
+        Me.GroupBox3.Text = "PLC NC"
         '
         'Label6
         '
@@ -464,30 +315,30 @@ Partial Class SettingForm
         Me.Label6.Text = "Disconnected"
         Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'Button1
+        'btn_disconnect_plc_nc
         '
-        Me.Button1.Location = New System.Drawing.Point(101, 107)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(88, 34)
-        Me.Button1.TabIndex = 2
-        Me.Button1.Text = "Disconnect"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btn_disconnect_plc_nc.Location = New System.Drawing.Point(101, 107)
+        Me.btn_disconnect_plc_nc.Name = "btn_disconnect_plc_nc"
+        Me.btn_disconnect_plc_nc.Size = New System.Drawing.Size(88, 34)
+        Me.btn_disconnect_plc_nc.TabIndex = 2
+        Me.btn_disconnect_plc_nc.Text = "Disconnect"
+        Me.btn_disconnect_plc_nc.UseVisualStyleBackColor = True
         '
-        'Button2
+        'btn_connect_plc_nc
         '
-        Me.Button2.Location = New System.Drawing.Point(10, 107)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 34)
-        Me.Button2.TabIndex = 2
-        Me.Button2.Text = "Connect"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.btn_connect_plc_nc.Location = New System.Drawing.Point(10, 107)
+        Me.btn_connect_plc_nc.Name = "btn_connect_plc_nc"
+        Me.btn_connect_plc_nc.Size = New System.Drawing.Size(75, 34)
+        Me.btn_connect_plc_nc.TabIndex = 2
+        Me.btn_connect_plc_nc.Text = "Connect"
+        Me.btn_connect_plc_nc.UseVisualStyleBackColor = True
         '
-        'TextBox2
+        'txt_port_plc_nc
         '
-        Me.TextBox2.Location = New System.Drawing.Point(62, 65)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(127, 26)
-        Me.TextBox2.TabIndex = 1
+        Me.txt_port_plc_nc.Location = New System.Drawing.Point(62, 65)
+        Me.txt_port_plc_nc.Name = "txt_port_plc_nc"
+        Me.txt_port_plc_nc.Size = New System.Drawing.Size(127, 26)
+        Me.txt_port_plc_nc.TabIndex = 1
         '
         'Label7
         '
@@ -498,12 +349,12 @@ Partial Class SettingForm
         Me.Label7.TabIndex = 0
         Me.Label7.Text = "Port"
         '
-        'TextBox3
+        'txt_ip_plc_nc
         '
-        Me.TextBox3.Location = New System.Drawing.Point(62, 33)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(127, 26)
-        Me.TextBox3.TabIndex = 1
+        Me.txt_ip_plc_nc.Location = New System.Drawing.Point(62, 33)
+        Me.txt_ip_plc_nc.Name = "txt_ip_plc_nc"
+        Me.txt_ip_plc_nc.Size = New System.Drawing.Size(127, 26)
+        Me.txt_ip_plc_nc.TabIndex = 1
         '
         'Label8
         '
@@ -516,12 +367,12 @@ Partial Class SettingForm
         '
         'GroupBox2
         '
-        Me.GroupBox2.Controls.Add(Me.Label5)
-        Me.GroupBox2.Controls.Add(Me.btn_disconnect_plc)
-        Me.GroupBox2.Controls.Add(Me.btn_connect_plc)
-        Me.GroupBox2.Controls.Add(Me.txt_Port_PLC)
+        Me.GroupBox2.Controls.Add(Me.lbl_plc_status)
+        Me.GroupBox2.Controls.Add(Me.btn_disconnect_plc_no)
+        Me.GroupBox2.Controls.Add(Me.btn_connect_plc_no)
+        Me.GroupBox2.Controls.Add(Me.txt_Port_PLC_NO)
         Me.GroupBox2.Controls.Add(Me.Label4)
-        Me.GroupBox2.Controls.Add(Me.txt_IP_PLC)
+        Me.GroupBox2.Controls.Add(Me.txt_IP_PLC_NO)
         Me.GroupBox2.Controls.Add(Me.Label3)
         Me.GroupBox2.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox2.Location = New System.Drawing.Point(76, 88)
@@ -529,44 +380,44 @@ Partial Class SettingForm
         Me.GroupBox2.Size = New System.Drawing.Size(206, 186)
         Me.GroupBox2.TabIndex = 5
         Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "PLC"
+        Me.GroupBox2.Text = "PLC NO"
         '
-        'Label5
+        'lbl_plc_status
         '
-        Me.Label5.BackColor = System.Drawing.Color.DarkRed
-        Me.Label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label5.ForeColor = System.Drawing.Color.White
-        Me.Label5.Location = New System.Drawing.Point(10, 153)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(179, 23)
-        Me.Label5.TabIndex = 3
-        Me.Label5.Text = "Disconnected"
-        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lbl_plc_status.BackColor = System.Drawing.Color.DarkRed
+        Me.lbl_plc_status.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lbl_plc_status.ForeColor = System.Drawing.Color.White
+        Me.lbl_plc_status.Location = New System.Drawing.Point(10, 153)
+        Me.lbl_plc_status.Name = "lbl_plc_status"
+        Me.lbl_plc_status.Size = New System.Drawing.Size(179, 23)
+        Me.lbl_plc_status.TabIndex = 3
+        Me.lbl_plc_status.Text = "Disconnected"
+        Me.lbl_plc_status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'btn_disconnect_plc
+        'btn_disconnect_plc_no
         '
-        Me.btn_disconnect_plc.Location = New System.Drawing.Point(101, 107)
-        Me.btn_disconnect_plc.Name = "btn_disconnect_plc"
-        Me.btn_disconnect_plc.Size = New System.Drawing.Size(88, 34)
-        Me.btn_disconnect_plc.TabIndex = 2
-        Me.btn_disconnect_plc.Text = "Disconnect"
-        Me.btn_disconnect_plc.UseVisualStyleBackColor = True
+        Me.btn_disconnect_plc_no.Location = New System.Drawing.Point(101, 107)
+        Me.btn_disconnect_plc_no.Name = "btn_disconnect_plc_no"
+        Me.btn_disconnect_plc_no.Size = New System.Drawing.Size(88, 34)
+        Me.btn_disconnect_plc_no.TabIndex = 2
+        Me.btn_disconnect_plc_no.Text = "Disconnect"
+        Me.btn_disconnect_plc_no.UseVisualStyleBackColor = True
         '
-        'btn_connect_plc
+        'btn_connect_plc_no
         '
-        Me.btn_connect_plc.Location = New System.Drawing.Point(10, 107)
-        Me.btn_connect_plc.Name = "btn_connect_plc"
-        Me.btn_connect_plc.Size = New System.Drawing.Size(75, 34)
-        Me.btn_connect_plc.TabIndex = 2
-        Me.btn_connect_plc.Text = "Connect"
-        Me.btn_connect_plc.UseVisualStyleBackColor = True
+        Me.btn_connect_plc_no.Location = New System.Drawing.Point(10, 107)
+        Me.btn_connect_plc_no.Name = "btn_connect_plc_no"
+        Me.btn_connect_plc_no.Size = New System.Drawing.Size(75, 34)
+        Me.btn_connect_plc_no.TabIndex = 2
+        Me.btn_connect_plc_no.Text = "Connect"
+        Me.btn_connect_plc_no.UseVisualStyleBackColor = True
         '
-        'txt_Port_PLC
+        'txt_Port_PLC_NO
         '
-        Me.txt_Port_PLC.Location = New System.Drawing.Point(62, 65)
-        Me.txt_Port_PLC.Name = "txt_Port_PLC"
-        Me.txt_Port_PLC.Size = New System.Drawing.Size(127, 26)
-        Me.txt_Port_PLC.TabIndex = 1
+        Me.txt_Port_PLC_NO.Location = New System.Drawing.Point(62, 65)
+        Me.txt_Port_PLC_NO.Name = "txt_Port_PLC_NO"
+        Me.txt_Port_PLC_NO.Size = New System.Drawing.Size(127, 26)
+        Me.txt_Port_PLC_NO.TabIndex = 1
         '
         'Label4
         '
@@ -577,12 +428,12 @@ Partial Class SettingForm
         Me.Label4.TabIndex = 0
         Me.Label4.Text = "Port"
         '
-        'txt_IP_PLC
+        'txt_IP_PLC_NO
         '
-        Me.txt_IP_PLC.Location = New System.Drawing.Point(62, 33)
-        Me.txt_IP_PLC.Name = "txt_IP_PLC"
-        Me.txt_IP_PLC.Size = New System.Drawing.Size(127, 26)
-        Me.txt_IP_PLC.TabIndex = 1
+        Me.txt_IP_PLC_NO.Location = New System.Drawing.Point(62, 33)
+        Me.txt_IP_PLC_NO.Name = "txt_IP_PLC_NO"
+        Me.txt_IP_PLC_NO.Size = New System.Drawing.Size(127, 26)
+        Me.txt_IP_PLC_NO.TabIndex = 1
         '
         'Label3
         '
@@ -665,6 +516,70 @@ Partial Class SettingForm
         Me.pb_status_bar.TabIndex = 77
         Me.pb_status_bar.TabStop = False
         '
+        'txt_database
+        '
+        Me.txt_database.Location = New System.Drawing.Point(104, 128)
+        Me.txt_database.Name = "txt_database"
+        Me.txt_database.Size = New System.Drawing.Size(127, 26)
+        Me.txt_database.TabIndex = 6
+        '
+        'txt_username
+        '
+        Me.txt_username.Location = New System.Drawing.Point(104, 64)
+        Me.txt_username.Name = "txt_username"
+        Me.txt_username.Size = New System.Drawing.Size(127, 26)
+        Me.txt_username.TabIndex = 7
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(12, 131)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(65, 20)
+        Me.Label9.TabIndex = 2
+        Me.Label9.Text = "Database"
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Location = New System.Drawing.Point(12, 67)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(71, 20)
+        Me.Label16.TabIndex = 3
+        Me.Label16.Text = "Username"
+        '
+        'txt_password
+        '
+        Me.txt_password.Location = New System.Drawing.Point(104, 96)
+        Me.txt_password.Name = "txt_password"
+        Me.txt_password.Size = New System.Drawing.Size(127, 26)
+        Me.txt_password.TabIndex = 8
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(12, 99)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(69, 20)
+        Me.Label5.TabIndex = 4
+        Me.Label5.Text = "Password"
+        '
+        'txt_hostname
+        '
+        Me.txt_hostname.Location = New System.Drawing.Point(104, 32)
+        Me.txt_hostname.Name = "txt_hostname"
+        Me.txt_hostname.Size = New System.Drawing.Size(127, 26)
+        Me.txt_hostname.TabIndex = 9
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Location = New System.Drawing.Point(12, 35)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(71, 20)
+        Me.Label17.TabIndex = 5
+        Me.Label17.Text = "Hostname"
+        '
         'SettingForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -685,7 +600,7 @@ Partial Class SettingForm
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.pb_status_bar)
         Me.Name = "SettingForm"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "SettingForm"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox7.ResumeLayout(False)
@@ -693,8 +608,6 @@ Partial Class SettingForm
         Me.GroupBox6.PerformLayout()
         Me.GroupBox5.ResumeLayout(False)
         Me.GroupBox5.PerformLayout()
-        Me.GroupBox4.ResumeLayout(False)
-        Me.GroupBox4.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
@@ -721,45 +634,38 @@ Partial Class SettingForm
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents GroupBox7 As GroupBox
     Friend WithEvents GroupBox6 As GroupBox
-    Friend WithEvents Label15 As Label
-    Friend WithEvents Button7 As Button
-    Friend WithEvents Button8 As Button
-    Friend WithEvents TextBox8 As TextBox
-    Friend WithEvents Label16 As Label
-    Friend WithEvents TextBox9 As TextBox
-    Friend WithEvents Label17 As Label
     Friend WithEvents GroupBox5 As GroupBox
     Friend WithEvents Label12 As Label
-    Friend WithEvents Button5 As Button
-    Friend WithEvents Button6 As Button
     Friend WithEvents TextBox6 As TextBox
     Friend WithEvents Label13 As Label
     Friend WithEvents TextBox7 As TextBox
     Friend WithEvents Label14 As Label
-    Friend WithEvents GroupBox4 As GroupBox
-    Friend WithEvents Label9 As Label
-    Friend WithEvents Button3 As Button
-    Friend WithEvents Button4 As Button
-    Friend WithEvents TextBox4 As TextBox
-    Friend WithEvents Label10 As Label
-    Friend WithEvents TextBox5 As TextBox
-    Friend WithEvents Label11 As Label
     Friend WithEvents GroupBox3 As GroupBox
     Friend WithEvents Label6 As Label
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Button2 As Button
-    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents txt_port_plc_nc As TextBox
     Friend WithEvents Label7 As Label
-    Friend WithEvents TextBox3 As TextBox
+    Friend WithEvents txt_ip_plc_nc As TextBox
     Friend WithEvents Label8 As Label
     Friend WithEvents GroupBox2 As GroupBox
-    Friend WithEvents Label5 As Label
-    Friend WithEvents btn_disconnect_plc As Button
-    Friend WithEvents btn_connect_plc As Button
-    Friend WithEvents txt_Port_PLC As TextBox
+    Friend WithEvents lbl_plc_status As Label
+    Friend WithEvents txt_Port_PLC_NO As TextBox
     Friend WithEvents Label4 As Label
-    Friend WithEvents txt_IP_PLC As TextBox
+    Friend WithEvents txt_IP_PLC_NO As TextBox
     Friend WithEvents Label3 As Label
     Friend WithEvents btn_save As Button
-    Friend WithEvents RichTextBox1 As RichTextBox
+    Friend WithEvents rtb_setting As RichTextBox
+    Friend WithEvents Button5 As Button
+    Friend WithEvents Button6 As Button
+    Friend WithEvents btn_disconnect_plc_nc As Button
+    Friend WithEvents btn_connect_plc_nc As Button
+    Friend WithEvents btn_disconnect_plc_no As Button
+    Friend WithEvents btn_connect_plc_no As Button
+    Friend WithEvents txt_database As TextBox
+    Friend WithEvents txt_username As TextBox
+    Friend WithEvents Label9 As Label
+    Friend WithEvents Label16 As Label
+    Friend WithEvents txt_password As TextBox
+    Friend WithEvents Label5 As Label
+    Friend WithEvents txt_hostname As TextBox
+    Friend WithEvents Label17 As Label
 End Class

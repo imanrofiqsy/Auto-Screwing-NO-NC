@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class MainForm
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class MainForm
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainForm))
@@ -32,6 +32,26 @@ Partial Class MainForm
         Me.lbl_user = New System.Windows.Forms.Label()
         Me.DateTime = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.txt_qr_nc = New System.Windows.Forms.TextBox()
+        Me.txt_qty_nc = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.cb_mat_nc = New System.Windows.Forms.ComboBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.rtb_status_nc = New System.Windows.Forms.RichTextBox()
+        Me.btn_start_nc = New System.Windows.Forms.Button()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.txt_qr_no = New System.Windows.Forms.TextBox()
+        Me.txt_qty_no = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.cb_mat_no = New System.Windows.Forms.ComboBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.rtb_status_no = New System.Windows.Forms.RichTextBox()
+        Me.btn_start_no = New System.Windows.Forms.Button()
         Me.btn_st6 = New System.Windows.Forms.Button()
         Me.btn_setting = New System.Windows.Forms.Button()
         Me.btn_st5 = New System.Windows.Forms.Button()
@@ -48,6 +68,11 @@ Partial Class MainForm
         Me.pb_status_bar = New System.Windows.Forms.PictureBox()
         Me.pb_status_mc = New System.Windows.Forms.PictureBox()
         Me.pb_logo = New System.Windows.Forms.PictureBox()
+        Me.GroupBox1.SuspendLayout()
+        Me.GroupBox4.SuspendLayout()
+        Me.GroupBox5.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
         CType(Me.pb_status_bar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pb_status_mc, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pb_logo, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -129,11 +154,215 @@ Partial Class MainForm
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.GroupBox4)
+        Me.GroupBox1.Controls.Add(Me.GroupBox2)
         Me.GroupBox1.Location = New System.Drawing.Point(138, 163)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(1074, 546)
         Me.GroupBox1.TabIndex = 27
         Me.GroupBox1.TabStop = False
+        '
+        'GroupBox4
+        '
+        Me.GroupBox4.Controls.Add(Me.txt_qr_nc)
+        Me.GroupBox4.Controls.Add(Me.txt_qty_nc)
+        Me.GroupBox4.Controls.Add(Me.Label6)
+        Me.GroupBox4.Controls.Add(Me.cb_mat_nc)
+        Me.GroupBox4.Controls.Add(Me.Label7)
+        Me.GroupBox4.Controls.Add(Me.Label8)
+        Me.GroupBox4.Controls.Add(Me.GroupBox5)
+        Me.GroupBox4.Controls.Add(Me.btn_start_nc)
+        Me.GroupBox4.Font = New System.Drawing.Font("Arial Narrow", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox4.Location = New System.Drawing.Point(548, 19)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(520, 521)
+        Me.GroupBox4.TabIndex = 0
+        Me.GroupBox4.TabStop = False
+        Me.GroupBox4.Text = "NC"
+        '
+        'txt_qr_nc
+        '
+        Me.txt_qr_nc.Location = New System.Drawing.Point(235, 199)
+        Me.txt_qr_nc.Name = "txt_qr_nc"
+        Me.txt_qr_nc.Size = New System.Drawing.Size(216, 38)
+        Me.txt_qr_nc.TabIndex = 19
+        '
+        'txt_qty_nc
+        '
+        Me.txt_qty_nc.Location = New System.Drawing.Point(235, 133)
+        Me.txt_qty_nc.Name = "txt_qty_nc"
+        Me.txt_qty_nc.Size = New System.Drawing.Size(127, 38)
+        Me.txt_qty_nc.TabIndex = 20
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(97, 202)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(109, 31)
+        Me.Label6.TabIndex = 15
+        Me.Label6.Text = "QR Code"
+        '
+        'cb_mat_nc
+        '
+        Me.cb_mat_nc.FormattingEnabled = True
+        Me.cb_mat_nc.Items.AddRange(New Object() {"SSAM", "BLR"})
+        Me.cb_mat_nc.Location = New System.Drawing.Point(235, 68)
+        Me.cb_mat_nc.Name = "cb_mat_nc"
+        Me.cb_mat_nc.Size = New System.Drawing.Size(216, 39)
+        Me.cb_mat_nc.TabIndex = 18
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(97, 136)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(103, 31)
+        Me.Label7.TabIndex = 16
+        Me.Label7.Text = "Quantity"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(97, 71)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(96, 31)
+        Me.Label8.TabIndex = 17
+        Me.Label8.Text = "Material"
+        '
+        'GroupBox5
+        '
+        Me.GroupBox5.Controls.Add(Me.rtb_status_nc)
+        Me.GroupBox5.Font = New System.Drawing.Font("Arial Narrow", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox5.Location = New System.Drawing.Point(26, 370)
+        Me.GroupBox5.Name = "GroupBox5"
+        Me.GroupBox5.Size = New System.Drawing.Size(459, 127)
+        Me.GroupBox5.TabIndex = 3
+        Me.GroupBox5.TabStop = False
+        Me.GroupBox5.Text = "Status"
+        '
+        'rtb_status_nc
+        '
+        Me.rtb_status_nc.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rtb_status_nc.Location = New System.Drawing.Point(6, 25)
+        Me.rtb_status_nc.Name = "rtb_status_nc"
+        Me.rtb_status_nc.Size = New System.Drawing.Size(447, 96)
+        Me.rtb_status_nc.TabIndex = 0
+        Me.rtb_status_nc.Text = ""
+        '
+        'btn_start_nc
+        '
+        Me.btn_start_nc.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_start_nc.Font = New System.Drawing.Font("Arial Narrow", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_start_nc.Image = Global.MASTER.My.Resources.Resources.icons8_run_command_50
+        Me.btn_start_nc.Location = New System.Drawing.Point(365, 270)
+        Me.btn_start_nc.Name = "btn_start_nc"
+        Me.btn_start_nc.Size = New System.Drawing.Size(120, 85)
+        Me.btn_start_nc.TabIndex = 14
+        Me.btn_start_nc.Text = "Start"
+        Me.btn_start_nc.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        Me.btn_start_nc.UseVisualStyleBackColor = True
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.txt_qr_no)
+        Me.GroupBox2.Controls.Add(Me.txt_qty_no)
+        Me.GroupBox2.Controls.Add(Me.Label5)
+        Me.GroupBox2.Controls.Add(Me.cb_mat_no)
+        Me.GroupBox2.Controls.Add(Me.Label4)
+        Me.GroupBox2.Controls.Add(Me.Label3)
+        Me.GroupBox2.Controls.Add(Me.GroupBox3)
+        Me.GroupBox2.Controls.Add(Me.btn_start_no)
+        Me.GroupBox2.Font = New System.Drawing.Font("Arial Narrow", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox2.Location = New System.Drawing.Point(6, 19)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(520, 521)
+        Me.GroupBox2.TabIndex = 0
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "NO"
+        '
+        'txt_qr_no
+        '
+        Me.txt_qr_no.Location = New System.Drawing.Point(235, 199)
+        Me.txt_qr_no.Name = "txt_qr_no"
+        Me.txt_qr_no.Size = New System.Drawing.Size(216, 38)
+        Me.txt_qr_no.TabIndex = 19
+        '
+        'txt_qty_no
+        '
+        Me.txt_qty_no.Location = New System.Drawing.Point(235, 133)
+        Me.txt_qty_no.Name = "txt_qty_no"
+        Me.txt_qty_no.Size = New System.Drawing.Size(127, 38)
+        Me.txt_qty_no.TabIndex = 20
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(97, 202)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(109, 31)
+        Me.Label5.TabIndex = 15
+        Me.Label5.Text = "QR Code"
+        '
+        'cb_mat_no
+        '
+        Me.cb_mat_no.FormattingEnabled = True
+        Me.cb_mat_no.Items.AddRange(New Object() {"SSAM", "BLR"})
+        Me.cb_mat_no.Location = New System.Drawing.Point(235, 68)
+        Me.cb_mat_no.Name = "cb_mat_no"
+        Me.cb_mat_no.Size = New System.Drawing.Size(216, 39)
+        Me.cb_mat_no.TabIndex = 18
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(97, 136)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(103, 31)
+        Me.Label4.TabIndex = 16
+        Me.Label4.Text = "Quantity"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(97, 71)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(96, 31)
+        Me.Label3.TabIndex = 17
+        Me.Label3.Text = "Material"
+        '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.rtb_status_no)
+        Me.GroupBox3.Font = New System.Drawing.Font("Arial Narrow", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox3.Location = New System.Drawing.Point(26, 370)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(459, 127)
+        Me.GroupBox3.TabIndex = 3
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "Status"
+        '
+        'rtb_status_no
+        '
+        Me.rtb_status_no.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rtb_status_no.Location = New System.Drawing.Point(6, 25)
+        Me.rtb_status_no.Name = "rtb_status_no"
+        Me.rtb_status_no.Size = New System.Drawing.Size(447, 96)
+        Me.rtb_status_no.TabIndex = 0
+        Me.rtb_status_no.Text = ""
+        '
+        'btn_start_no
+        '
+        Me.btn_start_no.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_start_no.Font = New System.Drawing.Font("Arial Narrow", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_start_no.Image = Global.MASTER.My.Resources.Resources.icons8_run_command_50
+        Me.btn_start_no.Location = New System.Drawing.Point(365, 270)
+        Me.btn_start_no.Name = "btn_start_no"
+        Me.btn_start_no.Size = New System.Drawing.Size(120, 85)
+        Me.btn_start_no.TabIndex = 14
+        Me.btn_start_no.Text = "Start"
+        Me.btn_start_no.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        Me.btn_start_no.UseVisualStyleBackColor = True
         '
         'btn_st6
         '
@@ -147,6 +376,7 @@ Partial Class MainForm
         Me.btn_st6.Text = "ST6"
         Me.btn_st6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         Me.btn_st6.UseVisualStyleBackColor = True
+        Me.btn_st6.Visible = False
         '
         'btn_setting
         '
@@ -173,6 +403,7 @@ Partial Class MainForm
         Me.btn_st5.Text = "ST5"
         Me.btn_st5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         Me.btn_st5.UseVisualStyleBackColor = True
+        Me.btn_st5.Visible = False
         '
         'btn_log
         '
@@ -199,6 +430,7 @@ Partial Class MainForm
         Me.btn_st4.Text = "ST4"
         Me.btn_st4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         Me.btn_st4.UseVisualStyleBackColor = True
+        Me.btn_st4.Visible = False
         '
         'btn_alarm
         '
@@ -225,6 +457,7 @@ Partial Class MainForm
         Me.btn_st3.Text = "ST3"
         Me.btn_st3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         Me.btn_st3.UseVisualStyleBackColor = True
+        Me.btn_st3.Visible = False
         '
         'btn_references
         '
@@ -251,6 +484,7 @@ Partial Class MainForm
         Me.btn_st2.Text = "ST2"
         Me.btn_st2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         Me.btn_st2.UseVisualStyleBackColor = True
+        Me.btn_st2.Visible = False
         '
         'btn_manual
         '
@@ -277,6 +511,7 @@ Partial Class MainForm
         Me.btn_st1.Text = "ST1"
         Me.btn_st1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         Me.btn_st1.UseVisualStyleBackColor = True
+        Me.btn_st1.Visible = False
         '
         'btn_home
         '
@@ -368,7 +603,14 @@ Partial Class MainForm
         Me.Controls.Add(Me.pb_logo)
         Me.Name = "MainForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Project Title"
+        Me.Text = "Auto Screwing NO NC"
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox4.ResumeLayout(False)
+        Me.GroupBox4.PerformLayout()
+        Me.GroupBox5.ResumeLayout(False)
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
+        Me.GroupBox3.ResumeLayout(False)
         CType(Me.pb_status_bar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pb_status_mc, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pb_logo, System.ComponentModel.ISupportInitialize).EndInit()
@@ -401,4 +643,24 @@ Partial Class MainForm
     Friend WithEvents pb_status_mc As PictureBox
     Friend WithEvents pb_logo As PictureBox
     Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents GroupBox4 As GroupBox
+    Friend WithEvents txt_qr_nc As TextBox
+    Friend WithEvents txt_qty_nc As TextBox
+    Friend WithEvents Label6 As Label
+    Friend WithEvents cb_mat_nc As ComboBox
+    Friend WithEvents Label7 As Label
+    Friend WithEvents Label8 As Label
+    Friend WithEvents GroupBox5 As GroupBox
+    Friend WithEvents rtb_status_nc As RichTextBox
+    Friend WithEvents btn_start_nc As Button
+    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents txt_qr_no As TextBox
+    Friend WithEvents txt_qty_no As TextBox
+    Friend WithEvents Label5 As Label
+    Friend WithEvents cb_mat_no As ComboBox
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Label3 As Label
+    Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents rtb_status_no As RichTextBox
+    Friend WithEvents btn_start_no As Button
 End Class

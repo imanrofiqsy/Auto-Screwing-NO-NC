@@ -43,9 +43,36 @@ Partial Class ManualForm
         Me.pb_status_mc = New System.Windows.Forms.PictureBox()
         Me.pb_logo = New System.Windows.Forms.PictureBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox6 = New System.Windows.Forms.GroupBox()
+        Me.RTB_MAN = New System.Windows.Forms.RichTextBox()
+        Me.GroupBox8 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox15 = New System.Windows.Forms.GroupBox()
+        Me.qr_listboxVars = New System.Windows.Forms.ListBox()
+        Me.btnQrUpdateVar = New System.Windows.Forms.Button()
+        Me.btn_open_qr = New System.Windows.Forms.Button()
+        Me.qrVarValue = New System.Windows.Forms.TextBox()
+        Me.btn_close_qr = New System.Windows.Forms.Button()
+        Me.btn_page_setup_qr = New System.Windows.Forms.Button()
+        Me.btn_print_qr = New System.Windows.Forms.Button()
+        Me.showhide_qr_designer = New System.Windows.Forms.Button()
+        Me.qrPreview = New System.Windows.Forms.PictureBox()
+        Me.btn_qr_location = New System.Windows.Forms.Button()
+        Me.btn_find = New System.Windows.Forms.Button()
+        Me.btn_setting_printer_qr = New System.Windows.Forms.Button()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.qr_printer_name = New System.Windows.Forms.ComboBox()
+        Me.qr_qty = New System.Windows.Forms.TextBox()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.qr_file_location = New System.Windows.Forms.TextBox()
+        Me.Label16 = New System.Windows.Forms.Label()
         CType(Me.pb_status_bar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pb_status_mc, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pb_logo, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox1.SuspendLayout()
+        Me.GroupBox6.SuspendLayout()
+        Me.GroupBox8.SuspendLayout()
+        Me.GroupBox15.SuspendLayout()
+        CType(Me.qrPreview, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TextBox1
@@ -261,11 +288,276 @@ Partial Class ManualForm
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.GroupBox6)
+        Me.GroupBox1.Controls.Add(Me.GroupBox8)
         Me.GroupBox1.Location = New System.Drawing.Point(138, 163)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(1074, 546)
         Me.GroupBox1.TabIndex = 28
         Me.GroupBox1.TabStop = False
+        '
+        'GroupBox6
+        '
+        Me.GroupBox6.BackColor = System.Drawing.Color.White
+        Me.GroupBox6.Controls.Add(Me.RTB_MAN)
+        Me.GroupBox6.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox6.ForeColor = System.Drawing.Color.Black
+        Me.GroupBox6.Location = New System.Drawing.Point(16, 370)
+        Me.GroupBox6.Name = "GroupBox6"
+        Me.GroupBox6.Size = New System.Drawing.Size(787, 160)
+        Me.GroupBox6.TabIndex = 136
+        Me.GroupBox6.TabStop = False
+        Me.GroupBox6.Text = "Status"
+        '
+        'RTB_MAN
+        '
+        Me.RTB_MAN.BackColor = System.Drawing.SystemColors.Info
+        Me.RTB_MAN.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RTB_MAN.ForeColor = System.Drawing.SystemColors.WindowText
+        Me.RTB_MAN.Location = New System.Drawing.Point(6, 25)
+        Me.RTB_MAN.Name = "RTB_MAN"
+        Me.RTB_MAN.ReadOnly = True
+        Me.RTB_MAN.Size = New System.Drawing.Size(775, 121)
+        Me.RTB_MAN.TabIndex = 0
+        Me.RTB_MAN.Text = ""
+        '
+        'GroupBox8
+        '
+        Me.GroupBox8.BackColor = System.Drawing.Color.White
+        Me.GroupBox8.Controls.Add(Me.GroupBox15)
+        Me.GroupBox8.Controls.Add(Me.showhide_qr_designer)
+        Me.GroupBox8.Controls.Add(Me.qrPreview)
+        Me.GroupBox8.Controls.Add(Me.btn_qr_location)
+        Me.GroupBox8.Controls.Add(Me.btn_find)
+        Me.GroupBox8.Controls.Add(Me.btn_setting_printer_qr)
+        Me.GroupBox8.Controls.Add(Me.Label11)
+        Me.GroupBox8.Controls.Add(Me.qr_printer_name)
+        Me.GroupBox8.Controls.Add(Me.qr_qty)
+        Me.GroupBox8.Controls.Add(Me.Label15)
+        Me.GroupBox8.Controls.Add(Me.qr_file_location)
+        Me.GroupBox8.Controls.Add(Me.Label16)
+        Me.GroupBox8.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox8.ForeColor = System.Drawing.Color.Black
+        Me.GroupBox8.Location = New System.Drawing.Point(16, 23)
+        Me.GroupBox8.Name = "GroupBox8"
+        Me.GroupBox8.Size = New System.Drawing.Size(787, 341)
+        Me.GroupBox8.TabIndex = 135
+        Me.GroupBox8.TabStop = False
+        Me.GroupBox8.Text = "Printer QR Code"
+        '
+        'GroupBox15
+        '
+        Me.GroupBox15.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox15.Controls.Add(Me.qr_listboxVars)
+        Me.GroupBox15.Controls.Add(Me.btnQrUpdateVar)
+        Me.GroupBox15.Controls.Add(Me.btn_open_qr)
+        Me.GroupBox15.Controls.Add(Me.qrVarValue)
+        Me.GroupBox15.Controls.Add(Me.btn_close_qr)
+        Me.GroupBox15.Controls.Add(Me.btn_page_setup_qr)
+        Me.GroupBox15.Controls.Add(Me.btn_print_qr)
+        Me.GroupBox15.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.GroupBox15.Location = New System.Drawing.Point(405, 28)
+        Me.GroupBox15.Name = "GroupBox15"
+        Me.GroupBox15.Size = New System.Drawing.Size(377, 182)
+        Me.GroupBox15.TabIndex = 26
+        Me.GroupBox15.TabStop = False
+        Me.GroupBox15.Text = "Variables settings"
+        '
+        'qr_listboxVars
+        '
+        Me.qr_listboxVars.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.qr_listboxVars.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.qr_listboxVars.ItemHeight = 18
+        Me.qr_listboxVars.Location = New System.Drawing.Point(11, 28)
+        Me.qr_listboxVars.Name = "qr_listboxVars"
+        Me.qr_listboxVars.Size = New System.Drawing.Size(239, 112)
+        Me.qr_listboxVars.TabIndex = 9
+        '
+        'btnQrUpdateVar
+        '
+        Me.btnQrUpdateVar.BackColor = System.Drawing.Color.White
+        Me.btnQrUpdateVar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnQrUpdateVar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.btnQrUpdateVar.Location = New System.Drawing.Point(263, 146)
+        Me.btnQrUpdateVar.Name = "btnQrUpdateVar"
+        Me.btnQrUpdateVar.Size = New System.Drawing.Size(108, 30)
+        Me.btnQrUpdateVar.TabIndex = 13
+        Me.btnQrUpdateVar.Text = "Update"
+        Me.btnQrUpdateVar.UseVisualStyleBackColor = False
+        '
+        'btn_open_qr
+        '
+        Me.btn_open_qr.BackColor = System.Drawing.Color.White
+        Me.btn_open_qr.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_open_qr.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.btn_open_qr.Location = New System.Drawing.Point(263, 18)
+        Me.btn_open_qr.Name = "btn_open_qr"
+        Me.btn_open_qr.Size = New System.Drawing.Size(108, 30)
+        Me.btn_open_qr.TabIndex = 16
+        Me.btn_open_qr.Text = "Open"
+        Me.btn_open_qr.UseVisualStyleBackColor = False
+        '
+        'qrVarValue
+        '
+        Me.qrVarValue.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.qrVarValue.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.qrVarValue.Location = New System.Drawing.Point(11, 150)
+        Me.qrVarValue.Name = "qrVarValue"
+        Me.qrVarValue.Size = New System.Drawing.Size(239, 26)
+        Me.qrVarValue.TabIndex = 12
+        '
+        'btn_close_qr
+        '
+        Me.btn_close_qr.BackColor = System.Drawing.Color.White
+        Me.btn_close_qr.Enabled = False
+        Me.btn_close_qr.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_close_qr.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.btn_close_qr.Location = New System.Drawing.Point(263, 114)
+        Me.btn_close_qr.Name = "btn_close_qr"
+        Me.btn_close_qr.Size = New System.Drawing.Size(108, 30)
+        Me.btn_close_qr.TabIndex = 15
+        Me.btn_close_qr.Text = "Close"
+        Me.btn_close_qr.UseVisualStyleBackColor = False
+        '
+        'btn_page_setup_qr
+        '
+        Me.btn_page_setup_qr.BackColor = System.Drawing.Color.White
+        Me.btn_page_setup_qr.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_page_setup_qr.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.btn_page_setup_qr.Location = New System.Drawing.Point(263, 82)
+        Me.btn_page_setup_qr.Name = "btn_page_setup_qr"
+        Me.btn_page_setup_qr.Size = New System.Drawing.Size(108, 30)
+        Me.btn_page_setup_qr.TabIndex = 8
+        Me.btn_page_setup_qr.Text = "Page Setup"
+        Me.btn_page_setup_qr.UseVisualStyleBackColor = False
+        '
+        'btn_print_qr
+        '
+        Me.btn_print_qr.BackColor = System.Drawing.Color.White
+        Me.btn_print_qr.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_print_qr.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.btn_print_qr.Location = New System.Drawing.Point(263, 50)
+        Me.btn_print_qr.Name = "btn_print_qr"
+        Me.btn_print_qr.Size = New System.Drawing.Size(108, 30)
+        Me.btn_print_qr.TabIndex = 7
+        Me.btn_print_qr.Text = "Print"
+        Me.btn_print_qr.UseVisualStyleBackColor = False
+        '
+        'showhide_qr_designer
+        '
+        Me.showhide_qr_designer.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.showhide_qr_designer.BackColor = System.Drawing.Color.White
+        Me.showhide_qr_designer.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.showhide_qr_designer.Location = New System.Drawing.Point(404, 293)
+        Me.showhide_qr_designer.Name = "showhide_qr_designer"
+        Me.showhide_qr_designer.Size = New System.Drawing.Size(377, 31)
+        Me.showhide_qr_designer.TabIndex = 17
+        Me.showhide_qr_designer.Text = "Show / Hide Designer"
+        Me.showhide_qr_designer.UseVisualStyleBackColor = False
+        '
+        'qrPreview
+        '
+        Me.qrPreview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.qrPreview.Location = New System.Drawing.Point(22, 63)
+        Me.qrPreview.Name = "qrPreview"
+        Me.qrPreview.Size = New System.Drawing.Size(377, 261)
+        Me.qrPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.qrPreview.TabIndex = 14
+        Me.qrPreview.TabStop = False
+        '
+        'btn_qr_location
+        '
+        Me.btn_qr_location.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_qr_location.Location = New System.Drawing.Point(359, 31)
+        Me.btn_qr_location.Name = "btn_qr_location"
+        Me.btn_qr_location.Size = New System.Drawing.Size(40, 26)
+        Me.btn_qr_location.TabIndex = 13
+        Me.btn_qr_location.Text = "..."
+        Me.btn_qr_location.UseVisualStyleBackColor = True
+        '
+        'btn_find
+        '
+        Me.btn_find.BackColor = System.Drawing.Color.White
+        Me.btn_find.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.btn_find.Location = New System.Drawing.Point(668, 219)
+        Me.btn_find.Name = "btn_find"
+        Me.btn_find.Size = New System.Drawing.Size(114, 35)
+        Me.btn_find.TabIndex = 12
+        Me.btn_find.Text = "Find"
+        Me.btn_find.UseVisualStyleBackColor = False
+        '
+        'btn_setting_printer_qr
+        '
+        Me.btn_setting_printer_qr.BackColor = System.Drawing.Color.White
+        Me.btn_setting_printer_qr.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.btn_setting_printer_qr.Location = New System.Drawing.Point(667, 257)
+        Me.btn_setting_printer_qr.Name = "btn_setting_printer_qr"
+        Me.btn_setting_printer_qr.Size = New System.Drawing.Size(114, 35)
+        Me.btn_setting_printer_qr.TabIndex = 12
+        Me.btn_setting_printer_qr.Text = "Settings"
+        Me.btn_setting_printer_qr.UseVisualStyleBackColor = False
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Location = New System.Drawing.Point(401, 243)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(54, 18)
+        Me.Label11.TabIndex = 11
+        Me.Label11.Text = "Printer"
+        '
+        'qr_printer_name
+        '
+        Me.qr_printer_name.BackColor = System.Drawing.Color.White
+        Me.qr_printer_name.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.qr_printer_name.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.qr_printer_name.FormattingEnabled = True
+        Me.qr_printer_name.Location = New System.Drawing.Point(405, 266)
+        Me.qr_printer_name.Name = "qr_printer_name"
+        Me.qr_printer_name.Size = New System.Drawing.Size(156, 26)
+        Me.qr_printer_name.TabIndex = 10
+        '
+        'qr_qty
+        '
+        Me.qr_qty.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.qr_qty.Location = New System.Drawing.Point(582, 264)
+        Me.qr_qty.Name = "qr_qty"
+        Me.qr_qty.Size = New System.Drawing.Size(72, 26)
+        Me.qr_qty.TabIndex = 6
+        Me.qr_qty.Text = "1"
+        Me.qr_qty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.Location = New System.Drawing.Point(578, 241)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(74, 18)
+        Me.Label15.TabIndex = 5
+        Me.Label15.Text = "Label Qty"
+        '
+        'qr_file_location
+        '
+        Me.qr_file_location.BackColor = System.Drawing.Color.White
+        Me.qr_file_location.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.qr_file_location.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.qr_file_location.Location = New System.Drawing.Point(123, 31)
+        Me.qr_file_location.Name = "qr_file_location"
+        Me.qr_file_location.Size = New System.Drawing.Size(230, 26)
+        Me.qr_file_location.TabIndex = 4
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label16.Location = New System.Drawing.Point(18, 31)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(98, 18)
+        Me.Label16.TabIndex = 3
+        Me.Label16.Text = "File Location"
         '
         'ManualForm
         '
@@ -297,6 +589,13 @@ Partial Class ManualForm
         CType(Me.pb_status_bar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pb_status_mc, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pb_logo, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox6.ResumeLayout(False)
+        Me.GroupBox8.ResumeLayout(False)
+        Me.GroupBox8.PerformLayout()
+        Me.GroupBox15.ResumeLayout(False)
+        Me.GroupBox15.PerformLayout()
+        CType(Me.qrPreview, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -321,4 +620,26 @@ Partial Class ManualForm
     Friend WithEvents pb_status_mc As PictureBox
     Friend WithEvents pb_logo As PictureBox
     Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents GroupBox6 As GroupBox
+    Friend WithEvents RTB_MAN As RichTextBox
+    Friend WithEvents GroupBox8 As GroupBox
+    Friend WithEvents GroupBox15 As GroupBox
+    Friend WithEvents qr_listboxVars As ListBox
+    Friend WithEvents btnQrUpdateVar As Button
+    Friend WithEvents btn_open_qr As Button
+    Friend WithEvents qrVarValue As TextBox
+    Friend WithEvents btn_close_qr As Button
+    Friend WithEvents btn_page_setup_qr As Button
+    Friend WithEvents btn_print_qr As Button
+    Friend WithEvents showhide_qr_designer As Button
+    Friend WithEvents qrPreview As PictureBox
+    Friend WithEvents btn_qr_location As Button
+    Friend WithEvents btn_find As Button
+    Friend WithEvents btn_setting_printer_qr As Button
+    Friend WithEvents Label11 As Label
+    Friend WithEvents qr_printer_name As ComboBox
+    Friend WithEvents qr_qty As TextBox
+    Friend WithEvents Label15 As Label
+    Friend WithEvents qr_file_location As TextBox
+    Friend WithEvents Label16 As Label
 End Class
