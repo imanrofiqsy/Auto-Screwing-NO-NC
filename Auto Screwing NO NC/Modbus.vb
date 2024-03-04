@@ -73,6 +73,10 @@ Public Class Modbus
             If state(0) = 777 Then
                 Return True
             End If
+        ElseIf condition = "Idle" Then
+            If state(0) <> 666 Then
+                Return True
+            End If
         End If
         Return False
     End Function

@@ -151,7 +151,6 @@ Partial Class ManualForm
         '
         'btn_st6
         '
-        Me.btn_st6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_st6.Font = New System.Drawing.Font("Arial Narrow", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_st6.Image = CType(resources.GetObject("btn_st6.Image"), System.Drawing.Image)
         Me.btn_st6.Location = New System.Drawing.Point(1218, 624)
@@ -161,10 +160,10 @@ Partial Class ManualForm
         Me.btn_st6.Text = "ST6"
         Me.btn_st6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         Me.btn_st6.UseVisualStyleBackColor = True
+        Me.btn_st6.Visible = False
         '
         'btn_st5
         '
-        Me.btn_st5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_st5.Font = New System.Drawing.Font("Arial Narrow", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_st5.Image = CType(resources.GetObject("btn_st5.Image"), System.Drawing.Image)
         Me.btn_st5.Location = New System.Drawing.Point(1218, 533)
@@ -174,10 +173,10 @@ Partial Class ManualForm
         Me.btn_st5.Text = "ST5"
         Me.btn_st5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         Me.btn_st5.UseVisualStyleBackColor = True
+        Me.btn_st5.Visible = False
         '
         'btn_st4
         '
-        Me.btn_st4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_st4.Font = New System.Drawing.Font("Arial Narrow", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_st4.Image = CType(resources.GetObject("btn_st4.Image"), System.Drawing.Image)
         Me.btn_st4.Location = New System.Drawing.Point(1218, 442)
@@ -187,10 +186,10 @@ Partial Class ManualForm
         Me.btn_st4.Text = "ST4"
         Me.btn_st4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         Me.btn_st4.UseVisualStyleBackColor = True
+        Me.btn_st4.Visible = False
         '
         'btn_st3
         '
-        Me.btn_st3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_st3.Font = New System.Drawing.Font("Arial Narrow", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_st3.Image = CType(resources.GetObject("btn_st3.Image"), System.Drawing.Image)
         Me.btn_st3.Location = New System.Drawing.Point(1218, 351)
@@ -200,10 +199,10 @@ Partial Class ManualForm
         Me.btn_st3.Text = "ST3"
         Me.btn_st3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         Me.btn_st3.UseVisualStyleBackColor = True
+        Me.btn_st3.Visible = False
         '
         'btn_st2
         '
-        Me.btn_st2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_st2.Font = New System.Drawing.Font("Arial Narrow", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_st2.Image = CType(resources.GetObject("btn_st2.Image"), System.Drawing.Image)
         Me.btn_st2.Location = New System.Drawing.Point(1218, 260)
@@ -213,10 +212,10 @@ Partial Class ManualForm
         Me.btn_st2.Text = "ST2"
         Me.btn_st2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         Me.btn_st2.UseVisualStyleBackColor = True
+        Me.btn_st2.Visible = False
         '
         'btn_st1
         '
-        Me.btn_st1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_st1.Font = New System.Drawing.Font("Arial Narrow", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_st1.Image = CType(resources.GetObject("btn_st1.Image"), System.Drawing.Image)
         Me.btn_st1.Location = New System.Drawing.Point(1218, 169)
@@ -226,10 +225,10 @@ Partial Class ManualForm
         Me.btn_st1.Text = "ST1"
         Me.btn_st1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         Me.btn_st1.UseVisualStyleBackColor = True
+        Me.btn_st1.Visible = False
         '
         'btn_home
         '
-        Me.btn_home.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_home.Font = New System.Drawing.Font("Arial Narrow", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_home.Image = Global.MASTER.My.Resources.Resources.icons8_home_50
         Me.btn_home.Location = New System.Drawing.Point(12, 169)
@@ -242,7 +241,6 @@ Partial Class ManualForm
         '
         'btn_login
         '
-        Me.btn_login.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_login.Font = New System.Drawing.Font("Arial Narrow", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_login.Image = Global.MASTER.My.Resources.Resources.icons8_change_user_50
         Me.btn_login.Location = New System.Drawing.Point(1101, 20)
@@ -266,7 +264,6 @@ Partial Class ManualForm
         '
         'pb_status_mc
         '
-        Me.pb_status_mc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.pb_status_mc.Image = Global.MASTER.My.Resources.Resources.mark_ok
         Me.pb_status_mc.Location = New System.Drawing.Point(967, 20)
         Me.pb_status_mc.Name = "pb_status_mc"
@@ -277,8 +274,7 @@ Partial Class ManualForm
         '
         'pb_logo
         '
-        Me.pb_logo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.pb_logo.Image = Global.MASTER.My.Resources.Resources.logo_sanindo_tekno_batam
+        Me.pb_logo.Image = Global.MASTER.My.Resources.Resources.GUI___Sch
         Me.pb_logo.Location = New System.Drawing.Point(12, 20)
         Me.pb_logo.Name = "pb_logo"
         Me.pb_logo.Size = New System.Drawing.Size(250, 85)

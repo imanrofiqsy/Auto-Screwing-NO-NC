@@ -68,6 +68,9 @@ Partial Class MainForm
         Me.pb_status_bar = New System.Windows.Forms.PictureBox()
         Me.pb_status_mc = New System.Windows.Forms.PictureBox()
         Me.pb_logo = New System.Windows.Forms.PictureBox()
+        Me.dgv_temp = New System.Windows.Forms.DataGridView()
+        Me.StartDate = New System.Windows.Forms.DateTimePicker()
+        Me.EndDate = New System.Windows.Forms.DateTimePicker()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
@@ -76,6 +79,7 @@ Partial Class MainForm
         CType(Me.pb_status_bar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pb_status_mc, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pb_logo, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgv_temp, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TextBox1
@@ -252,7 +256,6 @@ Partial Class MainForm
         '
         'btn_start_nc
         '
-        Me.btn_start_nc.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_start_nc.Font = New System.Drawing.Font("Arial Narrow", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_start_nc.Image = Global.MASTER.My.Resources.Resources.icons8_run_command_50
         Me.btn_start_nc.Location = New System.Drawing.Point(365, 270)
@@ -353,7 +356,6 @@ Partial Class MainForm
         '
         'btn_start_no
         '
-        Me.btn_start_no.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_start_no.Font = New System.Drawing.Font("Arial Narrow", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_start_no.Image = Global.MASTER.My.Resources.Resources.icons8_run_command_50
         Me.btn_start_no.Location = New System.Drawing.Point(365, 270)
@@ -366,7 +368,6 @@ Partial Class MainForm
         '
         'btn_st6
         '
-        Me.btn_st6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_st6.Font = New System.Drawing.Font("Arial Narrow", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_st6.Image = CType(resources.GetObject("btn_st6.Image"), System.Drawing.Image)
         Me.btn_st6.Location = New System.Drawing.Point(1218, 624)
@@ -380,7 +381,6 @@ Partial Class MainForm
         '
         'btn_setting
         '
-        Me.btn_setting.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_setting.Font = New System.Drawing.Font("Arial Narrow", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_setting.Image = Global.MASTER.My.Resources.Resources.icons8_setting_50
         Me.btn_setting.Location = New System.Drawing.Point(12, 624)
@@ -393,7 +393,6 @@ Partial Class MainForm
         '
         'btn_st5
         '
-        Me.btn_st5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_st5.Font = New System.Drawing.Font("Arial Narrow", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_st5.Image = CType(resources.GetObject("btn_st5.Image"), System.Drawing.Image)
         Me.btn_st5.Location = New System.Drawing.Point(1218, 533)
@@ -407,7 +406,6 @@ Partial Class MainForm
         '
         'btn_log
         '
-        Me.btn_log.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_log.Font = New System.Drawing.Font("Arial Narrow", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_log.Image = Global.MASTER.My.Resources.Resources.icons8_log_50
         Me.btn_log.Location = New System.Drawing.Point(12, 533)
@@ -420,7 +418,6 @@ Partial Class MainForm
         '
         'btn_st4
         '
-        Me.btn_st4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_st4.Font = New System.Drawing.Font("Arial Narrow", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_st4.Image = CType(resources.GetObject("btn_st4.Image"), System.Drawing.Image)
         Me.btn_st4.Location = New System.Drawing.Point(1218, 442)
@@ -434,7 +431,6 @@ Partial Class MainForm
         '
         'btn_alarm
         '
-        Me.btn_alarm.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_alarm.Font = New System.Drawing.Font("Arial Narrow", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_alarm.Image = Global.MASTER.My.Resources.Resources.icons8_siren_50
         Me.btn_alarm.Location = New System.Drawing.Point(12, 442)
@@ -447,7 +443,6 @@ Partial Class MainForm
         '
         'btn_st3
         '
-        Me.btn_st3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_st3.Font = New System.Drawing.Font("Arial Narrow", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_st3.Image = CType(resources.GetObject("btn_st3.Image"), System.Drawing.Image)
         Me.btn_st3.Location = New System.Drawing.Point(1218, 351)
@@ -461,7 +456,6 @@ Partial Class MainForm
         '
         'btn_references
         '
-        Me.btn_references.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_references.Font = New System.Drawing.Font("Arial Narrow", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_references.Image = Global.MASTER.My.Resources.Resources.icons8_open_book_50
         Me.btn_references.Location = New System.Drawing.Point(12, 351)
@@ -474,7 +468,6 @@ Partial Class MainForm
         '
         'btn_st2
         '
-        Me.btn_st2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_st2.Font = New System.Drawing.Font("Arial Narrow", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_st2.Image = CType(resources.GetObject("btn_st2.Image"), System.Drawing.Image)
         Me.btn_st2.Location = New System.Drawing.Point(1218, 260)
@@ -488,7 +481,6 @@ Partial Class MainForm
         '
         'btn_manual
         '
-        Me.btn_manual.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_manual.Font = New System.Drawing.Font("Arial Narrow", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_manual.Image = Global.MASTER.My.Resources.Resources.icons8_manual_50
         Me.btn_manual.Location = New System.Drawing.Point(12, 260)
@@ -501,7 +493,6 @@ Partial Class MainForm
         '
         'btn_st1
         '
-        Me.btn_st1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_st1.Font = New System.Drawing.Font("Arial Narrow", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_st1.Image = CType(resources.GetObject("btn_st1.Image"), System.Drawing.Image)
         Me.btn_st1.Location = New System.Drawing.Point(1218, 169)
@@ -515,7 +506,6 @@ Partial Class MainForm
         '
         'btn_home
         '
-        Me.btn_home.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_home.Font = New System.Drawing.Font("Arial Narrow", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_home.Image = Global.MASTER.My.Resources.Resources.icons8_home_50
         Me.btn_home.Location = New System.Drawing.Point(12, 169)
@@ -528,7 +518,6 @@ Partial Class MainForm
         '
         'btn_login
         '
-        Me.btn_login.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_login.Font = New System.Drawing.Font("Arial Narrow", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_login.Image = Global.MASTER.My.Resources.Resources.icons8_change_user_50
         Me.btn_login.Location = New System.Drawing.Point(1101, 20)
@@ -552,7 +541,6 @@ Partial Class MainForm
         '
         'pb_status_mc
         '
-        Me.pb_status_mc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.pb_status_mc.Image = Global.MASTER.My.Resources.Resources.mark_ok
         Me.pb_status_mc.Location = New System.Drawing.Point(967, 20)
         Me.pb_status_mc.Name = "pb_status_mc"
@@ -563,8 +551,7 @@ Partial Class MainForm
         '
         'pb_logo
         '
-        Me.pb_logo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.pb_logo.Image = Global.MASTER.My.Resources.Resources.logo_sanindo_tekno_batam
+        Me.pb_logo.Image = Global.MASTER.My.Resources.Resources.GUI___Sch
         Me.pb_logo.Location = New System.Drawing.Point(12, 20)
         Me.pb_logo.Name = "pb_logo"
         Me.pb_logo.Size = New System.Drawing.Size(250, 85)
@@ -572,12 +559,37 @@ Partial Class MainForm
         Me.pb_logo.TabIndex = 5
         Me.pb_logo.TabStop = False
         '
+        'dgv_temp
+        '
+        Me.dgv_temp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgv_temp.Location = New System.Drawing.Point(1384, 163)
+        Me.dgv_temp.Name = "dgv_temp"
+        Me.dgv_temp.Size = New System.Drawing.Size(44, 31)
+        Me.dgv_temp.TabIndex = 28
+        '
+        'StartDate
+        '
+        Me.StartDate.Location = New System.Drawing.Point(1384, 111)
+        Me.StartDate.Name = "StartDate"
+        Me.StartDate.Size = New System.Drawing.Size(200, 20)
+        Me.StartDate.TabIndex = 29
+        '
+        'EndDate
+        '
+        Me.EndDate.Location = New System.Drawing.Point(1384, 137)
+        Me.EndDate.Name = "EndDate"
+        Me.EndDate.Size = New System.Drawing.Size(200, 20)
+        Me.EndDate.TabIndex = 29
+        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1350, 729)
+        Me.Controls.Add(Me.EndDate)
+        Me.Controls.Add(Me.StartDate)
+        Me.Controls.Add(Me.dgv_temp)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.btn_st6)
@@ -614,6 +626,7 @@ Partial Class MainForm
         CType(Me.pb_status_bar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pb_status_mc, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pb_logo, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgv_temp, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -663,4 +676,7 @@ Partial Class MainForm
     Friend WithEvents GroupBox3 As GroupBox
     Friend WithEvents rtb_status_no As RichTextBox
     Friend WithEvents btn_start_no As Button
+    Friend WithEvents dgv_temp As DataGridView
+    Friend WithEvents StartDate As DateTimePicker
+    Friend WithEvents EndDate As DateTimePicker
 End Class

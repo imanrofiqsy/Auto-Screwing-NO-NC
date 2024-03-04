@@ -1,6 +1,7 @@
 ﻿Imports ControlBPM
 Imports System.Threading
 Imports System.Data.SqlClient
+Imports System.IO
 Public Class MainForm
     Dim ModbusNO = New Modbus
     Dim ModbusNC = New Modbus
@@ -17,6 +18,7 @@ Public Class MainForm
     Dim ThreadLoadingBar As Thread
     Dim ThreadNO As Thread
     Dim ThreadNC As Thread
+
     Private Sub initLoadingBar()
         ThreadLoadingBar = New Thread(New ThreadStart(AddressOf ProcessLoad))
         ThreadLoadingBar.Start()
@@ -55,7 +57,23 @@ Public Class MainForm
     End Sub
     Private Sub btn_setting_Click(sender As Object, e As EventArgs) Handles btn_setting.Click
         Hide()
-        SettingForm.Show()
+        SettingForm.ShowDialog()
+        Try
+            With Config
+                .addressPlcMC_NC = ReadINI(iniPath, "PLCMCNC", "IP")
+                .addressPlcMC_NO = ReadINI(iniPath, "PLCMCNO", "IP")
+                .dbHostName = ReadINI(iniPath, "DATABASE", "Hostname")
+                .dbUsername = ReadINI(iniPath, "DATABASE", "Username")
+                .dbPassword = ReadINI(iniPath, "DATABASE", "Password")
+                .dbDatabase = ReadINI(iniPath, "DATABASE", "Database")
+                .printerName = ReadINI(iniPath, "PRINTER", "Printername")
+                ModbusNO.OpenPort(.addressPlcMC_NO, "502")
+                ModbusNC.OpenPort(.addressPlcMC_NC, "502")
+                Thread.Sleep(100)
+            End With
+        Catch ex As Exception
+
+        End Try
     End Sub
     Private Sub GetUserLevel()
         If UserLevel = 1 Then
@@ -102,10 +120,11 @@ Public Class MainForm
                 .dbPassword = ReadINI(iniPath, "DATABASE", "Password")
                 .dbDatabase = ReadINI(iniPath, "DATABASE", "Database")
                 .printerName = ReadINI(iniPath, "PRINTER", "Printername")
+                .countNc = ReadINI(iniPath, "STATUSNC", "CounterProduct")
+                .countNo = ReadINI(iniPath, "STATUSNO", "CounterProduct")
                 ModbusNO.OpenPort(.addressPlcMC_NO, "502")
                 ModbusNC.OpenPort(.addressPlcMC_NC, "502")
                 UpdateLoadingBar(20, "Connecting to PLC...")
-                Thread.Sleep(500)
             End With
             Thread.Sleep(500)
 
@@ -139,6 +158,7 @@ Public Class MainForm
 
             killLoadingBar()
             Cursor = Cursors.Default
+            LoginForm.TopMost = True
             LoginForm.ShowDialog()
             Thread.Sleep(100)
             GetUserLevel()
@@ -154,10 +174,129 @@ Public Class MainForm
         LoginForm.ShowDialog()
         GetUserLevel()
     End Sub
+    Private Sub SaveDataLogNo()
+        StartDate.Value = Date.Today
+        EndDate.Value = Date.Today
+        Dim _start As String = StartDate.Value.ToString("yyyy-MM-dd 00:00:00")
+        Dim _end As String = EndDate.Value.ToString("yyyy-MM-dd 23:59:59")
+        Try
+            Call Database.Connect()
+            Dim sc As New SqlCommand("SELECT * FROM tb_no_report WHERE [Launch Time] BETWEEN '" + _start + "' AND '" + _end + "'", Database.Connection)
+            Dim adapter As New SqlDataAdapter(sc)
+            Dim ds As New DataSet
 
+            adapter.Fill(ds)
+            dgv_temp.DataSource = ds.Tables(0)
+            dgv_temp.ClearSelection()
+
+            Dim logFileName = $"Log_NO_{Date.Now.ToString("yyyyMMdd")}.csv"
+            Dim strFile As String = projectFolder & "\log\NO\" & logFileName
+
+            If dgv_temp.Rows.Count > 0 Then
+                Dim value As String = ""
+                Dim dr As New DataGridViewRow()
+
+                Dim swOut As StreamWriter = File.CreateText(strFile)
+
+                'write header rows to csv
+                For i As Integer = 0 To dgv_temp.Columns.Count - 1
+                    If i > 0 Then
+                        swOut.Write(";")
+                    End If
+                    swOut.Write(dgv_temp.Columns(i).HeaderText)
+                Next
+
+                swOut.WriteLine()
+
+                'write DataGridView rows to csv
+                For j As Integer = 0 To dgv_temp.Rows.Count - 1
+                    If j > 0 Then
+                        swOut.WriteLine()
+                    End If
+
+                    dr = dgv_temp.Rows(j)
+
+                    For i As Integer = 0 To dgv_temp.Columns.Count - 1
+                        If i > 0 Then
+                            swOut.Write(";")
+                        End If
+                        If IsDBNull(dr.Cells(i).Value) Then
+                            value = "0"
+                        Else
+                            value = CStr(dr.Cells(i).Value)
+                        End If
+                        swOut.Write(value)
+                    Next
+                Next
+                swOut.Close()
+            End If
+        Catch ex As Exception
+            Console.WriteLine("Error Save Datalog" + ex.Message)
+        End Try
+    End Sub
+    Private Sub SaveDataLogNc()
+        StartDate.Value = Date.Today
+        EndDate.Value = Date.Today
+        Dim _start As String = StartDate.Value.ToString("yyyy-MM-dd 00:00:00")
+        Dim _end As String = EndDate.Value.ToString("yyyy-MM-dd 23:59:59")
+        Try
+            Call Database.Connect()
+            Dim sc As New SqlCommand("SELECT * FROM tb_nc_report WHERE [Launch Time] BETWEEN '" + _start + "' AND '" + _end + "'", Database.Connection)
+            Dim adapter As New SqlDataAdapter(sc)
+            Dim ds As New DataSet
+
+            adapter.Fill(ds)
+            dgv_temp.DataSource = ds.Tables(0)
+            dgv_temp.ClearSelection()
+
+            Dim logFileName = $"Log_NC_{Date.Now.ToString("yyyyMMdd")}.csv"
+            Dim strFile As String = projectFolder & "\log\NC\" & logFileName
+
+            If dgv_temp.Rows.Count > 0 Then
+                Dim value As String = ""
+                Dim dr As New DataGridViewRow()
+
+                Dim swOut As StreamWriter = File.CreateText(strFile)
+
+                'write header rows to csv
+                For i As Integer = 0 To dgv_temp.Columns.Count - 1
+                    If i > 0 Then
+                        swOut.Write(";")
+                    End If
+                    swOut.Write(dgv_temp.Columns(i).HeaderText)
+                Next
+
+                swOut.WriteLine()
+
+                'write DataGridView rows to csv
+                For j As Integer = 0 To dgv_temp.Rows.Count - 1
+                    If j > 0 Then
+                        swOut.WriteLine()
+                    End If
+
+                    dr = dgv_temp.Rows(j)
+
+                    For i As Integer = 0 To dgv_temp.Columns.Count - 1
+                        If i > 0 Then
+                            swOut.Write(";")
+                        End If
+                        If IsDBNull(dr.Cells(i).Value) Then
+                            value = "0"
+                        Else
+                            value = CStr(dr.Cells(i).Value)
+                        End If
+                        swOut.Write(value)
+                    Next
+                Next
+                swOut.Close()
+            End If
+        Catch ex As Exception
+            Console.WriteLine("Error Save Datalog" + ex.Message)
+        End Try
+    End Sub
     Private Sub btn_start_no_MouseDown(sender As Object, e As MouseEventArgs) Handles btn_start_no.MouseDown
         Try
-            If cb_mat_no.Text <> "" And Val(txt_qty_no.Text) > 0 Then
+            If cb_mat_no.Text <> "" And Val(txt_qty_no.Text) > 0 And ModbusNO.GetState("Idle") Then
                 Call Database.Connect()
                 Dim sc As New SqlCommand("SELECT * FROM tb_references WHERE [Barcode Scan]='NO Contact " & cb_mat_no.Text & "'", Database.Connection)
                 Dim rd As SqlDataReader = sc.ExecuteReader
@@ -171,20 +310,27 @@ Public Class MainForm
                     .MaterialType = rd.Item("Material Type")
                     .Quantity = txt_qty_no.Text
                     .References = rd.Item("References")
+
+                    CodeSoftNO.qr_UpdateVarList()
+
+                    ModbusNO.SetState("Data Available")
+                    Thread.Sleep(10)
+                    ModbusNO.SetState("Start")
+
+                    Config.countNo += 1
+                    Dim sc_2 As New SqlCommand("INSERT INTO tb_no_report ([ID], [Contact Type], [Material Type], [Quantity], [Launch Time]) VALUES(" & Config.countNo & ", '" & .BarcodeScan & "', '" & .MaterialType & "', '" & .Quantity & "', '" & Date.Now.ToString("yyyy-MM-dd HH:mm:ss") & "')", Database.Connection)
+                    Dim adapter As New SqlDataAdapter(sc_2)
+                    adapter.SelectCommand.ExecuteNonQuery()
+
+                    SaveDataLogNo()
                 End With
-
-                CodeSoftNO.qr_UpdateVarList()
-
-                ModbusNO.SetState("Data Available")
-                Thread.Sleep(10)
-                ModbusNO.SetState("Start")
 
                 rtb_status_no.SelectionColor = Color.Black
                 rtb_status_no.AppendText(Date.Now.ToString("dd/MM/yyyy - hh:mm:ss ") + "[Status] Finish get qr content, record material and quantity to database and send data to PLC." + Environment.NewLine)
                 rtb_status_no.ScrollToCaret()
             Else
                 rtb_status_no.SelectionColor = Color.Red
-                rtb_status_no.AppendText(Date.Now.ToString("dd/MM/yyyy - hh:mm:ss ") + "[Status] Error, material or quantity not valid." + Environment.NewLine)
+                rtb_status_no.AppendText(Date.Now.ToString("dd/MM/yyyy - hh:mm:ss ") + "[Status] Error, material or quantity not valid or machine is not Idle." + Environment.NewLine)
                 rtb_status_no.ScrollToCaret()
             End If
         Catch ex As Exception
@@ -207,6 +353,14 @@ Public Class MainForm
                                rtb_status_no.AppendText(Date.Now.ToString("dd/MM/yyyy - hh:mm:ss ") + "[Status] Finish print label." + Environment.NewLine)
                                rtb_status_no.ScrollToCaret()
                            End Sub)
+                    Call Database.Connect()
+                    Dim sc_2 As New SqlCommand("UPDATE tb_no_report SET [Finish Time] = '" & Date.Now.ToString("yyyy-MM-dd HH:mm:ss") & "' WHERE [ID] = " & Config.countNo & "", Database.Connection)
+                    Dim adapter As New SqlDataAdapter(sc_2)
+                    adapter.SelectCommand.ExecuteNonQuery()
+                    Invoke(Sub()
+                               SaveDataLogNo()
+                               WriteINI(iniPath, "STATUSNO", "CounterProduct", Config.countNo)
+                           End Sub)
                 End If
             Catch ex As Exception
 
@@ -224,6 +378,14 @@ Public Class MainForm
                                rtb_status_nc.SelectionColor = Color.Black
                                rtb_status_nc.AppendText(Date.Now.ToString("dd/MM/yyyy - hh:mm:ss ") + "[Status] Finish print label." + Environment.NewLine)
                                rtb_status_nc.ScrollToCaret()
+                           End Sub)
+                    Call Database.Connect()
+                    Dim sc_2 As New SqlCommand("UPDATE tb_nc_report SET [Finish Time] = '" & Date.Now.ToString("yyyy-MM-dd HH:mm:ss") & "' WHERE [ID] = " & Config.countNc & "", Database.Connection)
+                    Dim adapter As New SqlDataAdapter(sc_2)
+                    adapter.SelectCommand.ExecuteNonQuery()
+                    Invoke(Sub()
+                               SaveDataLogNc()
+                               WriteINI(iniPath, "STATUSNC", "CounterProduct", Config.countNc)
                            End Sub)
                 End If
             Catch ex As Exception
@@ -246,7 +408,7 @@ Public Class MainForm
 
     Private Sub btn_start_nc_MouseDown(sender As Object, e As MouseEventArgs) Handles btn_start_nc.MouseDown
         Try
-            If cb_mat_nc.Text <> "" And Val(txt_qty_nc.Text) > 0 Then
+            If cb_mat_nc.Text <> "" And Val(txt_qty_nc.Text) > 0 And ModbusNC.GetState("Idle") Then
                 Call Database.Connect()
                 Dim sc As New SqlCommand("SELECT * FROM tb_references WHERE [Barcode Scan]='NO Contact " & cb_mat_nc.Text & "'", Database.Connection)
                 Dim rd As SqlDataReader = sc.ExecuteReader
@@ -260,20 +422,27 @@ Public Class MainForm
                     .MaterialType = rd.Item("Material Type")
                     .Quantity = txt_qty_nc.Text
                     .References = rd.Item("References")
+
+                    CodeSoftNC.qr_UpdateVarList()
+
+                    ModbusNC.SetState("Data Available")
+                    Thread.Sleep(10)
+                    ModbusNC.SetState("Start")
+
+                    Config.countNc += 1
+                    Dim sc_2 As New SqlCommand("INSERT INTO tb_nc_report ([ID], [Contact Type], [Material Type], [Quantity], [Launch Time]) VALUES(" & Config.countNc & ", 'NC', '" & .MaterialType & "', '" & .Quantity & "', '" & Date.Now.ToString("yyyy-MM-dd HH:mm:ss") & "')", Database.Connection)
+                    Dim adapter As New SqlDataAdapter(sc_2)
+                    adapter.SelectCommand.ExecuteNonQuery()
                 End With
 
-                CodeSoftNC.qr_UpdateVarList()
-
-                ModbusNC.SetState("Data Available")
-                Thread.Sleep(10)
-                ModbusNC.SetState("Start")
+                SaveDataLogNc()
 
                 rtb_status_nc.SelectionColor = Color.Black
                 rtb_status_nc.AppendText(Date.Now.ToString("dd/MM/yyyy - hh:mm:ss ") + "[Status] Finish get qr content, record material and quantity to database and send data to PLC." + Environment.NewLine)
                 rtb_status_nc.ScrollToCaret()
             Else
                 rtb_status_nc.SelectionColor = Color.Red
-                rtb_status_nc.AppendText(Date.Now.ToString("dd/MM/yyyy - hh:mm:ss ") + "[Status] Error, material or quantity not valid." + Environment.NewLine)
+                rtb_status_nc.AppendText(Date.Now.ToString("dd/MM/yyyy - hh:mm:ss ") + "[Status] Error, material or quantity not valid or machine is not Idle." + Environment.NewLine)
                 rtb_status_nc.ScrollToCaret()
             End If
         Catch ex As Exception

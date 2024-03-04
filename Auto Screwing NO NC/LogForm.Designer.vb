@@ -32,11 +32,18 @@ Partial Class LogForm
         Me.btn_home = New System.Windows.Forms.Button()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox_Status = New System.Windows.Forms.GroupBox()
+        Me.rtb_log = New System.Windows.Forms.RichTextBox()
+        Me.GroupBox_Export = New System.Windows.Forms.GroupBox()
+        Me.btn_fileLocation = New System.Windows.Forms.Button()
+        Me.ProgressBarExport = New System.Windows.Forms.ProgressBar()
+        Me.txtFileLocation = New System.Windows.Forms.TextBox()
+        Me.btn_export = New System.Windows.Forms.Button()
         Me.GroupBox_Filter = New System.Windows.Forms.GroupBox()
         Me.rbByREF = New System.Windows.Forms.RadioButton()
         Me.rbBydate = New System.Windows.Forms.RadioButton()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.tbSearchPO = New System.Windows.Forms.TextBox()
+        Me.txt_references = New System.Windows.Forms.TextBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -48,23 +55,20 @@ Partial Class LogForm
         Me.pb_status_mc = New System.Windows.Forms.PictureBox()
         Me.pb_logo = New System.Windows.Forms.PictureBox()
         Me.pb_status_bar = New System.Windows.Forms.PictureBox()
-        Me.GroupBox_Export = New System.Windows.Forms.GroupBox()
-        Me.btn_fileLocation = New System.Windows.Forms.Button()
-        Me.ProgressBarExport = New System.Windows.Forms.ProgressBar()
-        Me.txtFileLocation = New System.Windows.Forms.TextBox()
-        Me.btn_export = New System.Windows.Forms.Button()
-        Me.GroupBox_Status = New System.Windows.Forms.GroupBox()
-        Me.RTB_Status = New System.Windows.Forms.RichTextBox()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.rbNO = New System.Windows.Forms.RadioButton()
+        Me.rbNC = New System.Windows.Forms.RadioButton()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
+        Me.GroupBox_Status.SuspendLayout()
+        Me.GroupBox_Export.SuspendLayout()
         Me.GroupBox_Filter.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.pb_status_mc, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pb_logo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pb_status_bar, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox_Export.SuspendLayout()
-        Me.GroupBox_Status.SuspendLayout()
+        Me.GroupBox4.SuspendLayout()
         Me.SuspendLayout()
         '
         'TextBox1
@@ -139,7 +143,6 @@ Partial Class LogForm
         '
         'btn_home
         '
-        Me.btn_home.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_home.Font = New System.Drawing.Font("Arial Narrow", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_home.Image = Global.MASTER.My.Resources.Resources.icons8_home_50
         Me.btn_home.Location = New System.Drawing.Point(12, 169)
@@ -152,6 +155,8 @@ Partial Class LogForm
         '
         'DataGridView1
         '
+        Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
+        Me.DataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Location = New System.Drawing.Point(6, 19)
         Me.DataGridView1.Name = "DataGridView1"
@@ -170,174 +175,30 @@ Partial Class LogForm
         Me.GroupBox1.TabIndex = 74
         Me.GroupBox1.TabStop = False
         '
-        'GroupBox_Filter
+        'GroupBox_Status
         '
-        Me.GroupBox_Filter.BackColor = System.Drawing.Color.White
-        Me.GroupBox_Filter.Controls.Add(Me.rbByREF)
-        Me.GroupBox_Filter.Controls.Add(Me.rbBydate)
-        Me.GroupBox_Filter.Controls.Add(Me.GroupBox3)
-        Me.GroupBox_Filter.Controls.Add(Me.GroupBox2)
-        Me.GroupBox_Filter.Controls.Add(Me.btn_search)
-        Me.GroupBox_Filter.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox_Filter.ForeColor = System.Drawing.Color.Black
-        Me.GroupBox_Filter.Location = New System.Drawing.Point(6, 370)
-        Me.GroupBox_Filter.Name = "GroupBox_Filter"
-        Me.GroupBox_Filter.Size = New System.Drawing.Size(469, 170)
-        Me.GroupBox_Filter.TabIndex = 21
-        Me.GroupBox_Filter.TabStop = False
-        Me.GroupBox_Filter.Text = "Datalog Finder"
+        Me.GroupBox_Status.BackColor = System.Drawing.Color.White
+        Me.GroupBox_Status.Controls.Add(Me.rtb_log)
+        Me.GroupBox_Status.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox_Status.ForeColor = System.Drawing.Color.Black
+        Me.GroupBox_Status.Location = New System.Drawing.Point(816, 370)
+        Me.GroupBox_Status.Name = "GroupBox_Status"
+        Me.GroupBox_Status.Size = New System.Drawing.Size(378, 170)
+        Me.GroupBox_Status.TabIndex = 24
+        Me.GroupBox_Status.TabStop = False
+        Me.GroupBox_Status.Text = "Status"
         '
-        'rbByREF
+        'rtb_log
         '
-        Me.rbByREF.AutoSize = True
-        Me.rbByREF.Location = New System.Drawing.Point(348, 70)
-        Me.rbByREF.Name = "rbByREF"
-        Me.rbByREF.Size = New System.Drawing.Size(115, 24)
-        Me.rbByREF.TabIndex = 8
-        Me.rbByREF.TabStop = True
-        Me.rbByREF.Text = "By References"
-        Me.rbByREF.UseVisualStyleBackColor = True
-        '
-        'rbBydate
-        '
-        Me.rbBydate.AutoSize = True
-        Me.rbBydate.Location = New System.Drawing.Point(348, 33)
-        Me.rbBydate.Name = "rbBydate"
-        Me.rbBydate.Size = New System.Drawing.Size(74, 24)
-        Me.rbBydate.TabIndex = 7
-        Me.rbBydate.TabStop = True
-        Me.rbBydate.Text = "By Date"
-        Me.rbBydate.UseVisualStyleBackColor = True
-        '
-        'GroupBox3
-        '
-        Me.GroupBox3.Controls.Add(Me.tbSearchPO)
-        Me.GroupBox3.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox3.Location = New System.Drawing.Point(6, 115)
-        Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(313, 49)
-        Me.GroupBox3.TabIndex = 6
-        Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "By References"
-        '
-        'tbSearchPO
-        '
-        Me.tbSearchPO.BackColor = System.Drawing.Color.White
-        Me.tbSearchPO.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbSearchPO.ForeColor = System.Drawing.Color.Black
-        Me.tbSearchPO.Location = New System.Drawing.Point(9, 21)
-        Me.tbSearchPO.Name = "tbSearchPO"
-        Me.tbSearchPO.Size = New System.Drawing.Size(298, 22)
-        Me.tbSearchPO.TabIndex = 24
-        '
-        'GroupBox2
-        '
-        Me.GroupBox2.Controls.Add(Me.Label3)
-        Me.GroupBox2.Controls.Add(Me.Label4)
-        Me.GroupBox2.Controls.Add(Me.DateTimePickerEndDate)
-        Me.GroupBox2.Controls.Add(Me.DateTimePickerStartDate)
-        Me.GroupBox2.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox2.Location = New System.Drawing.Point(6, 25)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(313, 73)
-        Me.GroupBox2.TabIndex = 5
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "By Date"
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(6, 19)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(69, 20)
-        Me.Label3.TabIndex = 1
-        Me.Label3.Text = "Start Date"
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(6, 47)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(65, 20)
-        Me.Label4.TabIndex = 3
-        Me.Label4.Text = "End Date"
-        '
-        'DateTimePickerEndDate
-        '
-        Me.DateTimePickerEndDate.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DateTimePickerEndDate.Location = New System.Drawing.Point(97, 43)
-        Me.DateTimePickerEndDate.Name = "DateTimePickerEndDate"
-        Me.DateTimePickerEndDate.Size = New System.Drawing.Size(200, 26)
-        Me.DateTimePickerEndDate.TabIndex = 2
-        '
-        'DateTimePickerStartDate
-        '
-        Me.DateTimePickerStartDate.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DateTimePickerStartDate.Location = New System.Drawing.Point(97, 15)
-        Me.DateTimePickerStartDate.Name = "DateTimePickerStartDate"
-        Me.DateTimePickerStartDate.Size = New System.Drawing.Size(200, 26)
-        Me.DateTimePickerStartDate.TabIndex = 0
-        '
-        'btn_search
-        '
-        Me.btn_search.Location = New System.Drawing.Point(325, 115)
-        Me.btn_search.Name = "btn_search"
-        Me.btn_search.Size = New System.Drawing.Size(138, 49)
-        Me.btn_search.TabIndex = 4
-        Me.btn_search.Text = "Search"
-        Me.btn_search.UseVisualStyleBackColor = True
-        '
-        'DateTime
-        '
-        Me.DateTime.Enabled = True
-        '
-        'btn_login
-        '
-        Me.btn_login.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_login.Font = New System.Drawing.Font("Arial Narrow", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_login.Image = Global.MASTER.My.Resources.Resources.icons8_change_user_50
-        Me.btn_login.Location = New System.Drawing.Point(1101, 20)
-        Me.btn_login.Name = "btn_login"
-        Me.btn_login.Size = New System.Drawing.Size(85, 85)
-        Me.btn_login.TabIndex = 71
-        Me.btn_login.Text = "Login"
-        Me.btn_login.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        Me.btn_login.UseVisualStyleBackColor = True
-        '
-        'pb_status_mc
-        '
-        Me.pb_status_mc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.pb_status_mc.Image = Global.MASTER.My.Resources.Resources.mark_ok
-        Me.pb_status_mc.Location = New System.Drawing.Point(967, 20)
-        Me.pb_status_mc.Name = "pb_status_mc"
-        Me.pb_status_mc.Size = New System.Drawing.Size(85, 85)
-        Me.pb_status_mc.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.pb_status_mc.TabIndex = 64
-        Me.pb_status_mc.TabStop = False
-        '
-        'pb_logo
-        '
-        Me.pb_logo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.pb_logo.Image = Global.MASTER.My.Resources.Resources.logo_sanindo_tekno_batam
-        Me.pb_logo.Location = New System.Drawing.Point(12, 20)
-        Me.pb_logo.Name = "pb_logo"
-        Me.pb_logo.Size = New System.Drawing.Size(250, 85)
-        Me.pb_logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.pb_logo.TabIndex = 63
-        Me.pb_logo.TabStop = False
-        '
-        'pb_status_bar
-        '
-        Me.pb_status_bar.BackColor = System.Drawing.Color.LimeGreen
-        Me.pb_status_bar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.pb_status_bar.Location = New System.Drawing.Point(425, 20)
-        Me.pb_status_bar.Name = "pb_status_bar"
-        Me.pb_status_bar.Size = New System.Drawing.Size(500, 85)
-        Me.pb_status_bar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.pb_status_bar.TabIndex = 65
-        Me.pb_status_bar.TabStop = False
+        Me.rtb_log.BackColor = System.Drawing.Color.White
+        Me.rtb_log.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rtb_log.ForeColor = System.Drawing.SystemColors.WindowText
+        Me.rtb_log.Location = New System.Drawing.Point(6, 25)
+        Me.rtb_log.Name = "rtb_log"
+        Me.rtb_log.ReadOnly = True
+        Me.rtb_log.Size = New System.Drawing.Size(366, 139)
+        Me.rtb_log.TabIndex = 0
+        Me.rtb_log.Text = ""
         '
         'GroupBox_Export
         '
@@ -392,30 +253,205 @@ Partial Class LogForm
         Me.btn_export.Text = "Export"
         Me.btn_export.UseVisualStyleBackColor = True
         '
-        'GroupBox_Status
+        'GroupBox_Filter
         '
-        Me.GroupBox_Status.BackColor = System.Drawing.Color.White
-        Me.GroupBox_Status.Controls.Add(Me.RTB_Status)
-        Me.GroupBox_Status.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox_Status.ForeColor = System.Drawing.Color.Black
-        Me.GroupBox_Status.Location = New System.Drawing.Point(816, 370)
-        Me.GroupBox_Status.Name = "GroupBox_Status"
-        Me.GroupBox_Status.Size = New System.Drawing.Size(378, 170)
-        Me.GroupBox_Status.TabIndex = 24
-        Me.GroupBox_Status.TabStop = False
-        Me.GroupBox_Status.Text = "Status"
+        Me.GroupBox_Filter.BackColor = System.Drawing.Color.White
+        Me.GroupBox_Filter.Controls.Add(Me.GroupBox4)
+        Me.GroupBox_Filter.Controls.Add(Me.rbByREF)
+        Me.GroupBox_Filter.Controls.Add(Me.rbBydate)
+        Me.GroupBox_Filter.Controls.Add(Me.GroupBox3)
+        Me.GroupBox_Filter.Controls.Add(Me.GroupBox2)
+        Me.GroupBox_Filter.Controls.Add(Me.btn_search)
+        Me.GroupBox_Filter.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox_Filter.ForeColor = System.Drawing.Color.Black
+        Me.GroupBox_Filter.Location = New System.Drawing.Point(6, 370)
+        Me.GroupBox_Filter.Name = "GroupBox_Filter"
+        Me.GroupBox_Filter.Size = New System.Drawing.Size(469, 170)
+        Me.GroupBox_Filter.TabIndex = 21
+        Me.GroupBox_Filter.TabStop = False
+        Me.GroupBox_Filter.Text = "Datalog Finder"
         '
-        'RTB_Status
+        'rbByREF
         '
-        Me.RTB_Status.BackColor = System.Drawing.Color.White
-        Me.RTB_Status.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RTB_Status.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.RTB_Status.Location = New System.Drawing.Point(6, 25)
-        Me.RTB_Status.Name = "RTB_Status"
-        Me.RTB_Status.ReadOnly = True
-        Me.RTB_Status.Size = New System.Drawing.Size(366, 139)
-        Me.RTB_Status.TabIndex = 0
-        Me.RTB_Status.Text = ""
+        Me.rbByREF.AutoSize = True
+        Me.rbByREF.Location = New System.Drawing.Point(348, 70)
+        Me.rbByREF.Name = "rbByREF"
+        Me.rbByREF.Size = New System.Drawing.Size(115, 24)
+        Me.rbByREF.TabIndex = 8
+        Me.rbByREF.TabStop = True
+        Me.rbByREF.Text = "By References"
+        Me.rbByREF.UseVisualStyleBackColor = True
+        '
+        'rbBydate
+        '
+        Me.rbBydate.AutoSize = True
+        Me.rbBydate.Location = New System.Drawing.Point(348, 49)
+        Me.rbBydate.Name = "rbBydate"
+        Me.rbBydate.Size = New System.Drawing.Size(74, 24)
+        Me.rbBydate.TabIndex = 7
+        Me.rbBydate.TabStop = True
+        Me.rbBydate.Text = "By Date"
+        Me.rbBydate.UseVisualStyleBackColor = True
+        '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.txt_references)
+        Me.GroupBox3.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox3.Location = New System.Drawing.Point(6, 115)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(313, 49)
+        Me.GroupBox3.TabIndex = 6
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "By References"
+        '
+        'txt_references
+        '
+        Me.txt_references.BackColor = System.Drawing.Color.White
+        Me.txt_references.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_references.ForeColor = System.Drawing.Color.Black
+        Me.txt_references.Location = New System.Drawing.Point(9, 21)
+        Me.txt_references.Name = "txt_references"
+        Me.txt_references.Size = New System.Drawing.Size(298, 22)
+        Me.txt_references.TabIndex = 24
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.Label3)
+        Me.GroupBox2.Controls.Add(Me.Label4)
+        Me.GroupBox2.Controls.Add(Me.DateTimePickerEndDate)
+        Me.GroupBox2.Controls.Add(Me.DateTimePickerStartDate)
+        Me.GroupBox2.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox2.Location = New System.Drawing.Point(6, 25)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(257, 73)
+        Me.GroupBox2.TabIndex = 5
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "By Date"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(6, 19)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(69, 20)
+        Me.Label3.TabIndex = 1
+        Me.Label3.Text = "Start Date"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(6, 47)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(65, 20)
+        Me.Label4.TabIndex = 3
+        Me.Label4.Text = "End Date"
+        '
+        'DateTimePickerEndDate
+        '
+        Me.DateTimePickerEndDate.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DateTimePickerEndDate.Location = New System.Drawing.Point(97, 43)
+        Me.DateTimePickerEndDate.Name = "DateTimePickerEndDate"
+        Me.DateTimePickerEndDate.Size = New System.Drawing.Size(144, 26)
+        Me.DateTimePickerEndDate.TabIndex = 2
+        '
+        'DateTimePickerStartDate
+        '
+        Me.DateTimePickerStartDate.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DateTimePickerStartDate.Location = New System.Drawing.Point(97, 15)
+        Me.DateTimePickerStartDate.Name = "DateTimePickerStartDate"
+        Me.DateTimePickerStartDate.Size = New System.Drawing.Size(144, 26)
+        Me.DateTimePickerStartDate.TabIndex = 0
+        '
+        'btn_search
+        '
+        Me.btn_search.Location = New System.Drawing.Point(325, 115)
+        Me.btn_search.Name = "btn_search"
+        Me.btn_search.Size = New System.Drawing.Size(138, 49)
+        Me.btn_search.TabIndex = 4
+        Me.btn_search.Text = "Search"
+        Me.btn_search.UseVisualStyleBackColor = True
+        '
+        'DateTime
+        '
+        Me.DateTime.Enabled = True
+        '
+        'btn_login
+        '
+        Me.btn_login.Font = New System.Drawing.Font("Arial Narrow", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_login.Image = Global.MASTER.My.Resources.Resources.icons8_change_user_50
+        Me.btn_login.Location = New System.Drawing.Point(1101, 20)
+        Me.btn_login.Name = "btn_login"
+        Me.btn_login.Size = New System.Drawing.Size(85, 85)
+        Me.btn_login.TabIndex = 71
+        Me.btn_login.Text = "Login"
+        Me.btn_login.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        Me.btn_login.UseVisualStyleBackColor = True
+        '
+        'pb_status_mc
+        '
+        Me.pb_status_mc.Image = Global.MASTER.My.Resources.Resources.mark_ok
+        Me.pb_status_mc.Location = New System.Drawing.Point(967, 20)
+        Me.pb_status_mc.Name = "pb_status_mc"
+        Me.pb_status_mc.Size = New System.Drawing.Size(85, 85)
+        Me.pb_status_mc.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.pb_status_mc.TabIndex = 64
+        Me.pb_status_mc.TabStop = False
+        '
+        'pb_logo
+        '
+        Me.pb_logo.Image = Global.MASTER.My.Resources.Resources.GUI___Sch
+        Me.pb_logo.Location = New System.Drawing.Point(12, 20)
+        Me.pb_logo.Name = "pb_logo"
+        Me.pb_logo.Size = New System.Drawing.Size(250, 85)
+        Me.pb_logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.pb_logo.TabIndex = 63
+        Me.pb_logo.TabStop = False
+        '
+        'pb_status_bar
+        '
+        Me.pb_status_bar.BackColor = System.Drawing.Color.LimeGreen
+        Me.pb_status_bar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.pb_status_bar.Location = New System.Drawing.Point(425, 20)
+        Me.pb_status_bar.Name = "pb_status_bar"
+        Me.pb_status_bar.Size = New System.Drawing.Size(500, 85)
+        Me.pb_status_bar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pb_status_bar.TabIndex = 65
+        Me.pb_status_bar.TabStop = False
+        '
+        'GroupBox4
+        '
+        Me.GroupBox4.Controls.Add(Me.rbNO)
+        Me.GroupBox4.Controls.Add(Me.rbNC)
+        Me.GroupBox4.Location = New System.Drawing.Point(269, 25)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(65, 73)
+        Me.GroupBox4.TabIndex = 9
+        Me.GroupBox4.TabStop = False
+        Me.GroupBox4.Text = "Type"
+        '
+        'rbNO
+        '
+        Me.rbNO.AutoSize = True
+        Me.rbNO.Location = New System.Drawing.Point(9, 24)
+        Me.rbNO.Name = "rbNO"
+        Me.rbNO.Size = New System.Drawing.Size(46, 24)
+        Me.rbNO.TabIndex = 9
+        Me.rbNO.TabStop = True
+        Me.rbNO.Text = "NO"
+        Me.rbNO.UseVisualStyleBackColor = True
+        '
+        'rbNC
+        '
+        Me.rbNC.AutoSize = True
+        Me.rbNC.Location = New System.Drawing.Point(9, 43)
+        Me.rbNC.Name = "rbNC"
+        Me.rbNC.Size = New System.Drawing.Size(45, 24)
+        Me.rbNC.TabIndex = 10
+        Me.rbNC.TabStop = True
+        Me.rbNC.Text = "NC"
+        Me.rbNC.UseVisualStyleBackColor = True
         '
         'LogForm
         '
@@ -440,6 +476,9 @@ Partial Class LogForm
         Me.Text = "LogForm"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox_Status.ResumeLayout(False)
+        Me.GroupBox_Export.ResumeLayout(False)
+        Me.GroupBox_Export.PerformLayout()
         Me.GroupBox_Filter.ResumeLayout(False)
         Me.GroupBox_Filter.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
@@ -449,9 +488,8 @@ Partial Class LogForm
         CType(Me.pb_status_mc, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pb_logo, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pb_status_bar, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox_Export.ResumeLayout(False)
-        Me.GroupBox_Export.PerformLayout()
-        Me.GroupBox_Status.ResumeLayout(False)
+        Me.GroupBox4.ResumeLayout(False)
+        Me.GroupBox4.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -475,7 +513,7 @@ Partial Class LogForm
     Friend WithEvents rbByREF As RadioButton
     Friend WithEvents rbBydate As RadioButton
     Friend WithEvents GroupBox3 As GroupBox
-    Friend WithEvents tbSearchPO As TextBox
+    Friend WithEvents txt_references As TextBox
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
@@ -483,10 +521,13 @@ Partial Class LogForm
     Friend WithEvents DateTimePickerStartDate As DateTimePicker
     Friend WithEvents btn_search As Button
     Friend WithEvents GroupBox_Status As GroupBox
-    Friend WithEvents RTB_Status As RichTextBox
+    Friend WithEvents rtb_log As RichTextBox
     Friend WithEvents GroupBox_Export As GroupBox
     Friend WithEvents btn_fileLocation As Button
     Friend WithEvents ProgressBarExport As ProgressBar
     Friend WithEvents txtFileLocation As TextBox
     Friend WithEvents btn_export As Button
+    Friend WithEvents GroupBox4 As GroupBox
+    Friend WithEvents rbNO As RadioButton
+    Friend WithEvents rbNC As RadioButton
 End Class

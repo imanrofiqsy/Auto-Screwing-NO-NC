@@ -11,6 +11,8 @@
         Dim dbPassword As String
         Dim dbDatabase As String
         Dim printerName As String
+        Dim countNo As Integer
+        Dim countNc As Integer
     End Structure
 
     Public Content As New labelConfig
