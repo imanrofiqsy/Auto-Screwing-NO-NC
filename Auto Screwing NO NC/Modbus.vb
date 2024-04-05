@@ -1,6 +1,7 @@
 ﻿Imports EasyModbus
 Public Class Modbus
     Dim modbusClient As ModbusClient
+    Dim ConnectionError As Boolean
     Public Sub OpenPort(IP As String, PORT As String)
         modbusClient = New ModbusClient(IP, Val(PORT))
         modbusClient.Connect()
@@ -8,6 +9,9 @@ Public Class Modbus
     Public Sub ClosePort()
         modbusClient.Disconnect()
     End Sub
+    Public Function _ConnectionError() As Boolean
+        Return ConnectionError
+    End Function
     Public Sub WriteBit(addr As Integer, bit As Integer, val As Integer)
         Dim address_val() As Integer
         address_val = modbusClient.ReadHoldingRegisters(addr, 1)
@@ -45,6 +49,23 @@ Public Class Modbus
             End If
         Next
     End Function
+    Public Function ReadDoubleInteger(addr As Integer) As Integer
+        Dim address_val() As Integer
+        Dim result As Integer
+
+        address_val = modbusClient.ReadHoldingRegisters(addr, 2)
+        result = (CInt(address_val(0)) And &HFFFF) Or (CInt(address_val(1)) << 16)
+        Return result
+    End Function
+    Public Sub WriteDoubleInteger(addr As Integer, val As Int32)
+        Dim values(1) As Int32
+        values(0) = CInt((val >> 16) And &HFFFF)
+        values(1) = CInt(val And &HFFFF)
+        Dim result(1) As Integer
+        result(0) = values(1)
+        result(1) = values(0)
+        modbusClient.WriteMultipleRegisters(addr, result)
+    End Sub
     'tambahan
     Public Sub SetMaterial(type As String)
         If type = "SSAM" Then
@@ -68,7 +89,16 @@ Public Class Modbus
         modbusClient.WriteSingleRegister(5002, state)
     End Sub
     Public Function GetState(condition As String) As Boolean
-        Dim state() As Integer = modbusClient.ReadHoldingRegisters(5002, 1)
+        Dim state() As Integer
+        state = modbusClient.ReadHoldingRegisters(5002, 1)
+
+        If state(0) = -30208 Then
+            ConnectionError = True
+            Return False
+        Else
+            ConnectionError = False
+        End If
+
         If condition = "Start Print" Then
             If state(0) = 777 Then
                 Return True

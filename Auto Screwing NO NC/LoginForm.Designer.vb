@@ -109,7 +109,6 @@ Partial Class LoginForm
         'PictureBox1
         '
         Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
-        Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.PictureBox1.Image = Global.MASTER.My.Resources.Resources.GUI___Sch
         Me.PictureBox1.Location = New System.Drawing.Point(117, 4)
         Me.PictureBox1.Name = "PictureBox1"
@@ -134,6 +133,7 @@ Partial Class LoginForm
         Me.Controls.Add(Me.PictureBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "LoginForm"
+        Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "LoginForm"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()

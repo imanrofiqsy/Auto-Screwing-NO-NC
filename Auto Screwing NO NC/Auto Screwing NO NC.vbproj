@@ -50,6 +50,9 @@
   <PropertyGroup>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>iconsch.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ControlBPM">
       <HintPath>C:\Users\SANINDO\source\repos\TESTER\Libraries\ControlBPM.dll</HintPath>
@@ -264,6 +267,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-run-command-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="iconsch.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

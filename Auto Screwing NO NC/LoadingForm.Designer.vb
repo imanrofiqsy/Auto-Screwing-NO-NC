@@ -53,7 +53,6 @@ Partial Class LoadingForm
         '
         'PictureBox1
         '
-        Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.PictureBox1.Image = Global.MASTER.My.Resources.Resources.GUI___Sch
         Me.PictureBox1.Location = New System.Drawing.Point(86, 9)
         Me.PictureBox1.Name = "PictureBox1"
@@ -66,12 +65,14 @@ Partial Class LoadingForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(434, 161)
         Me.Controls.Add(Me.LoadingBar)
         Me.Controls.Add(Me.lbl_loading)
         Me.Controls.Add(Me.PictureBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "LoadingForm"
+        Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "LoadingForm"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()

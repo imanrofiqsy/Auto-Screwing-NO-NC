@@ -1,0 +1,8 @@
+[20240307] ALARM : . . . . . . . . 
+[20240307] ALARM : [100] Cannot comunicate with modbus plc nc
+[20240307] ALARM : [100] Cannot comunicate with modbus plc nc
+[20240307] ALARM : [200] Cannot comunicate with modbus plc no
+[20240307] ALARM : [200] Cannot comunicate with modbus plc no
+[20240307 - 02:01:52] ALARM : . . . . . . . . 
+[20240307 - 02:03:39] ALARM : [200] Cannot comunicate with modbus plc no
+[20240307 - 02:10:23] ALARM : [100] Cannot comunicate with modbus plc nc

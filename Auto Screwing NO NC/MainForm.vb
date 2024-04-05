@@ -18,6 +18,7 @@ Public Class MainForm
     Dim ThreadLoadingBar As Thread
     Dim ThreadNO As Thread
     Dim ThreadNC As Thread
+    Dim ThreadAlarm As Thread
 
     Private Sub initLoadingBar()
         ThreadLoadingBar = New Thread(New ThreadStart(AddressOf ProcessLoad))
@@ -62,13 +63,21 @@ Public Class MainForm
             With Config
                 .addressPlcMC_NC = ReadINI(iniPath, "PLCMCNC", "IP")
                 .addressPlcMC_NO = ReadINI(iniPath, "PLCMCNO", "IP")
+                tempEnNc = Boolean.Parse(ReadINI(iniPath, "PLCMCNC", "Enabled"))
+                tempEnNo = Boolean.Parse(ReadINI(iniPath, "PLCMCNO", "Enabled"))
                 .dbHostName = ReadINI(iniPath, "DATABASE", "Hostname")
                 .dbUsername = ReadINI(iniPath, "DATABASE", "Username")
                 .dbPassword = ReadINI(iniPath, "DATABASE", "Password")
                 .dbDatabase = ReadINI(iniPath, "DATABASE", "Database")
                 .printerName = ReadINI(iniPath, "PRINTER", "Printername")
-                ModbusNO.OpenPort(.addressPlcMC_NO, "502")
-                ModbusNC.OpenPort(.addressPlcMC_NC, "502")
+                If tempEnNo Then
+                    ModbusNO.OpenPort(.addressPlcMC_NO, "502")
+                End If
+                .enableNo = tempEnNo
+                If tempEnNc Then
+                    ModbusNC.OpenPort(.addressPlcMC_NC, "502")
+                End If
+                .enableNc = tempEnNc
                 Thread.Sleep(100)
             End With
         Catch ex As Exception
@@ -115,6 +124,8 @@ Public Class MainForm
             With Config
                 .addressPlcMC_NC = ReadINI(iniPath, "PLCMCNC", "IP")
                 .addressPlcMC_NO = ReadINI(iniPath, "PLCMCNO", "IP")
+                .enableNc = Boolean.Parse(ReadINI(iniPath, "PLCMCNC", "Enabled"))
+                .enableNo = Boolean.Parse(ReadINI(iniPath, "PLCMCNO", "Enabled"))
                 .dbHostName = ReadINI(iniPath, "DATABASE", "Hostname")
                 .dbUsername = ReadINI(iniPath, "DATABASE", "Username")
                 .dbPassword = ReadINI(iniPath, "DATABASE", "Password")
@@ -122,11 +133,21 @@ Public Class MainForm
                 .printerName = ReadINI(iniPath, "PRINTER", "Printername")
                 .countNc = ReadINI(iniPath, "STATUSNC", "CounterProduct")
                 .countNo = ReadINI(iniPath, "STATUSNO", "CounterProduct")
-                ModbusNO.OpenPort(.addressPlcMC_NO, "502")
-                ModbusNC.OpenPort(.addressPlcMC_NC, "502")
+                If .enableNo Then
+                    ModbusNO.OpenPort(.addressPlcMC_NO, "502")
+                Else
+                    UpdateLoadingBar(20, "PLC Machine NO is Disabled...")
+                End If
+                Thread.Sleep(200)
+
+                If .enableNc Then
+                    ModbusNC.OpenPort(.addressPlcMC_NC, "502")
+                Else
+                    UpdateLoadingBar(20, "PLC Machine NO is Disabled...")
+                End If
+                Thread.Sleep(200)
                 UpdateLoadingBar(20, "Connecting to PLC...")
             End With
-            Thread.Sleep(500)
 
             With Content
                 .BarcodeScan = ReadINI(iniPath, "LABEL", "BarcodeScan")
@@ -144,12 +165,14 @@ Public Class MainForm
             CodeSoftNC.OpenCodesoft()
             CodeSoftNC.OpenDocument(labelPathNC)
             CodeSoftNC.SetPrinter(Config.printerName)
-            Thread.Sleep(500)
+            Thread.Sleep(100)
 
             ThreadNO = New Thread(AddressOf NO_Thread)
             ThreadNO.Start()
             ThreadNC = New Thread(AddressOf NC_Thread)
             ThreadNC.Start()
+            ThreadAlarm = New Thread(AddressOf Alarm_Thread)
+            ThreadAlarm.Start()
             UpdateLoadingBar(80, "Creating Multithreading...")
             Thread.Sleep(500)
 
@@ -345,22 +368,24 @@ Public Class MainForm
     Public Sub NO_Thread()
         Do
             Try
-                If ModbusNO.GetState("Start Print") Then
-                    'CodeSoftNO.PrintLabel(Integer.Parse("1")) 'bypass print
-                    ModbusNO.SetState("Finish Print")
-                    Invoke(Sub()
-                               rtb_status_no.SelectionColor = Color.Black
-                               rtb_status_no.AppendText(Date.Now.ToString("dd/MM/yyyy - hh:mm:ss ") + "[Status] Finish print label." + Environment.NewLine)
-                               rtb_status_no.ScrollToCaret()
-                           End Sub)
-                    Call Database.Connect()
-                    Dim sc_2 As New SqlCommand("UPDATE tb_no_report SET [Finish Time] = '" & Date.Now.ToString("yyyy-MM-dd HH:mm:ss") & "' WHERE [ID] = " & Config.countNo & "", Database.Connection)
-                    Dim adapter As New SqlDataAdapter(sc_2)
-                    adapter.SelectCommand.ExecuteNonQuery()
-                    Invoke(Sub()
-                               SaveDataLogNo()
-                               WriteINI(iniPath, "STATUSNO", "CounterProduct", Config.countNo)
-                           End Sub)
+                If Config.enableNo Then
+                    If ModbusNO.GetState("Start Print") Then
+                        'CodeSoftNO.PrintLabel(Integer.Parse("1")) 'bypass print
+                        ModbusNO.SetState("Finish Print")
+                        Invoke(Sub()
+                                   rtb_status_no.SelectionColor = Color.Black
+                                   rtb_status_no.AppendText(Date.Now.ToString("dd/MM/yyyy - hh:mm:ss ") + "[Status] Finish print label." + Environment.NewLine)
+                                   rtb_status_no.ScrollToCaret()
+                               End Sub)
+                        Call Database.Connect()
+                        Dim sc_2 As New SqlCommand("UPDATE tb_no_report SET [Finish Time] = '" & Date.Now.ToString("yyyy-MM-dd HH:mm:ss") & "' WHERE [ID] = " & Config.countNo & "", Database.Connection)
+                        Dim adapter As New SqlDataAdapter(sc_2)
+                        adapter.SelectCommand.ExecuteNonQuery()
+                        Invoke(Sub()
+                                   SaveDataLogNo()
+                                   WriteINI(iniPath, "STATUSNO", "CounterProduct", Config.countNo)
+                               End Sub)
+                    End If
                 End If
             Catch ex As Exception
 
@@ -371,22 +396,24 @@ Public Class MainForm
     Public Sub NC_Thread()
         Do
             Try
-                If ModbusNC.GetState("Start Print") Then
-                    'CodeSoftNC.PrintLabel(Integer.Parse("1")) 'bypass print
-                    ModbusNC.SetState("Finish Print")
-                    Invoke(Sub()
-                               rtb_status_nc.SelectionColor = Color.Black
-                               rtb_status_nc.AppendText(Date.Now.ToString("dd/MM/yyyy - hh:mm:ss ") + "[Status] Finish print label." + Environment.NewLine)
-                               rtb_status_nc.ScrollToCaret()
-                           End Sub)
-                    Call Database.Connect()
-                    Dim sc_2 As New SqlCommand("UPDATE tb_nc_report SET [Finish Time] = '" & Date.Now.ToString("yyyy-MM-dd HH:mm:ss") & "' WHERE [ID] = " & Config.countNc & "", Database.Connection)
-                    Dim adapter As New SqlDataAdapter(sc_2)
-                    adapter.SelectCommand.ExecuteNonQuery()
-                    Invoke(Sub()
-                               SaveDataLogNc()
-                               WriteINI(iniPath, "STATUSNC", "CounterProduct", Config.countNc)
-                           End Sub)
+                If Config.enableNc Then
+                    If ModbusNC.GetState("Start Print") Then
+                        'CodeSoftNC.PrintLabel(Integer.Parse("1")) 'bypass print
+                        ModbusNC.SetState("Finish Print")
+                        Invoke(Sub()
+                                   rtb_status_nc.SelectionColor = Color.Black
+                                   rtb_status_nc.AppendText(Date.Now.ToString("dd/MM/yyyy - hh:mm:ss ") + "[Status] Finish print label." + Environment.NewLine)
+                                   rtb_status_nc.ScrollToCaret()
+                               End Sub)
+                        Call Database.Connect()
+                        Dim sc_2 As New SqlCommand("UPDATE tb_nc_report SET [Finish Time] = '" & Date.Now.ToString("yyyy-MM-dd HH:mm:ss") & "' WHERE [ID] = " & Config.countNc & "", Database.Connection)
+                        Dim adapter As New SqlDataAdapter(sc_2)
+                        adapter.SelectCommand.ExecuteNonQuery()
+                        Invoke(Sub()
+                                   SaveDataLogNc()
+                                   WriteINI(iniPath, "STATUSNC", "CounterProduct", Config.countNc)
+                               End Sub)
+                    End If
                 End If
             Catch ex As Exception
 
@@ -394,13 +421,42 @@ Public Class MainForm
             Thread.Sleep(500)
         Loop
     End Sub
+    Private Sub Alarm_Thread()
+        Do
+            With Alarm
+                If ModbusNC._ConnectionError AndAlso Config.enableNc Then
+                    .PlcNc = "[100] Cannot comunicate with modbus plc nc"
+                Else
+                    .PlcNc = ""
+                End If
 
+                If ModbusNO._ConnectionError AndAlso Config.enableNo Then
+                    .PlcNo = "[200] Cannot comunicate with modbus plc no"
+                Else
+                    .PlcNo = ""
+                End If
+                Invoke(Sub()
+                           If .PlcNc <> "" Then
+                               txt_alarm.Text = "ALARM : " + .PlcNc
+                           ElseIf .PlcNo <> "" Then
+                               txt_alarm.Text = "ALARM : " + .PlcNo
+                           Else
+                               txt_alarm.Text = "ALARM : . . . ."
+                           End If
+                       End Sub)
+            End With
+            Thread.Sleep(100)
+        Loop
+    End Sub
     Private Sub MainForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         If ThreadNO.IsAlive Then
             ThreadNO.Abort()
         End If
         If ThreadNC.IsAlive Then
             ThreadNC.Abort()
+        End If
+        If ThreadAlarm.IsAlive Then
+            ThreadAlarm.Abort()
         End If
         CodeSoftNO.CloseCodesoft()
         CodeSoftNC.CloseCodesoft()
@@ -410,7 +466,7 @@ Public Class MainForm
         Try
             If cb_mat_nc.Text <> "" And Val(txt_qty_nc.Text) > 0 And ModbusNC.GetState("Idle") Then
                 Call Database.Connect()
-                Dim sc As New SqlCommand("SELECT * FROM tb_references WHERE [Barcode Scan]='NO Contact " & cb_mat_nc.Text & "'", Database.Connection)
+                Dim sc As New SqlCommand("SELECT * FROM tb_references WHERE [Barcode Scan]='NC Contact " & cb_mat_nc.Text & "'", Database.Connection)
                 Dim rd As SqlDataReader = sc.ExecuteReader
                 rd.Read()
 
@@ -509,6 +565,26 @@ Public Class MainForm
                 rtb_status_nc.AppendText(Date.Now.ToString("dd/MM/yyyy - hh:mm:ss ") + "[Status] Failed send quantity. " + ex.Message + Environment.NewLine)
                 rtb_status_nc.ScrollToCaret()
             End Try
+        End If
+    End Sub
+
+    Private Sub txt_alarm_TextChanged(sender As Object, e As EventArgs) Handles txt_alarm.TextChanged
+        If txt_alarm.Text <> "ALARM : . . . ." Then
+            Dim alarmFileName = $"Alarm_{Date.Now.ToString("yyyyMMdd")}.txt"
+            Dim strFile As String = projectFolder & "\Alarm\" & alarmFileName
+            Dim fileExists As Boolean = File.Exists(strFile)
+
+            If File.Exists(strFile) Then
+                ' If the file exists, append the log entry
+                Using sw As New StreamWriter(strFile, True)
+                    sw.WriteLine(Date.Now.ToString("[yyyyMMdd - hh:mm:ss] ") + txt_alarm.Text)
+                End Using
+            Else
+                ' If the file does not exist, create it and write the log entry
+                Using sw As New StreamWriter(strFile)
+                    sw.WriteLine(Date.Now.ToString("[yyyyMMdd - hh:mm:ss] ") + txt_alarm.Text)
+                End Using
+            End If
         End If
     End Sub
 End Class

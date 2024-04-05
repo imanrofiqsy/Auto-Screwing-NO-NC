@@ -23,8 +23,11 @@ Partial Class ReferencesForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ReferencesForm))
         Me.DateTime = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.rtb_references = New System.Windows.Forms.RichTextBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
@@ -49,8 +52,7 @@ Partial Class ReferencesForm
         Me.txt_barcode_scan = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txt_alarm = New System.Windows.Forms.TextBox()
         Me.lbl_date = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.lbl_curr_time = New System.Windows.Forms.Label()
@@ -62,9 +64,10 @@ Partial Class ReferencesForm
         Me.pb_status_mc = New System.Windows.Forms.PictureBox()
         Me.pb_logo = New System.Windows.Forms.PictureBox()
         Me.GroupBox1.SuspendLayout()
+        Me.GroupBox4.SuspendLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pb_status_bar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pb_status_mc, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pb_logo, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -76,14 +79,33 @@ Partial Class ReferencesForm
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.GroupBox4)
         Me.GroupBox1.Controls.Add(Me.GroupBox3)
         Me.GroupBox1.Controls.Add(Me.GroupBox2)
-        Me.GroupBox1.Controls.Add(Me.DataGridView1)
         Me.GroupBox1.Location = New System.Drawing.Point(138, 163)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(1200, 546)
         Me.GroupBox1.TabIndex = 50
         Me.GroupBox1.TabStop = False
+        '
+        'GroupBox4
+        '
+        Me.GroupBox4.Controls.Add(Me.DataGridView1)
+        Me.GroupBox4.Location = New System.Drawing.Point(287, 22)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(907, 518)
+        Me.GroupBox4.TabIndex = 2
+        Me.GroupBox4.TabStop = False
+        '
+        'DataGridView1
+        '
+        Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
+        Me.DataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Location = New System.Drawing.Point(6, 10)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.Size = New System.Drawing.Size(895, 502)
+        Me.DataGridView1.TabIndex = 0
         '
         'GroupBox3
         '
@@ -100,6 +122,7 @@ Partial Class ReferencesForm
         '
         Me.rtb_references.Location = New System.Drawing.Point(6, 25)
         Me.rtb_references.Name = "rtb_references"
+        Me.rtb_references.ReadOnly = True
         Me.rtb_references.Size = New System.Drawing.Size(263, 109)
         Me.rtb_references.TabIndex = 0
         Me.rtb_references.Text = ""
@@ -316,27 +339,18 @@ Partial Class ReferencesForm
         Me.Label3.TabIndex = 5
         Me.Label3.Text = "Barcode Scan"
         '
-        'DataGridView1
+        'txt_alarm
         '
-        Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
-        Me.DataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(287, 19)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(907, 521)
-        Me.DataGridView1.TabIndex = 0
-        '
-        'TextBox1
-        '
-        Me.TextBox1.BackColor = System.Drawing.Color.DarkRed
-        Me.TextBox1.Font = New System.Drawing.Font("Arial Narrow", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.ForeColor = System.Drawing.SystemColors.Window
-        Me.TextBox1.Location = New System.Drawing.Point(12, 121)
-        Me.TextBox1.Multiline = True
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(1326, 30)
-        Me.TextBox1.TabIndex = 49
-        Me.TextBox1.Text = "ALARM : . . . . . . . . "
+        Me.txt_alarm.BackColor = System.Drawing.Color.DarkRed
+        Me.txt_alarm.Font = New System.Drawing.Font("Arial Narrow", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_alarm.ForeColor = System.Drawing.SystemColors.Window
+        Me.txt_alarm.Location = New System.Drawing.Point(12, 121)
+        Me.txt_alarm.Multiline = True
+        Me.txt_alarm.Name = "txt_alarm"
+        Me.txt_alarm.ReadOnly = True
+        Me.txt_alarm.Size = New System.Drawing.Size(1326, 30)
+        Me.txt_alarm.TabIndex = 49
+        Me.txt_alarm.Text = "ALARM : . . . . . . . . "
         '
         'lbl_date
         '
@@ -419,6 +433,7 @@ Partial Class ReferencesForm
         Me.btn_login.Text = "Login"
         Me.btn_login.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         Me.btn_login.UseVisualStyleBackColor = True
+        Me.btn_login.Visible = False
         '
         'pb_status_bar
         '
@@ -458,7 +473,7 @@ Partial Class ReferencesForm
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1350, 729)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.txt_alarm)
         Me.Controls.Add(Me.btn_home)
         Me.Controls.Add(Me.btn_login)
         Me.Controls.Add(Me.lbl_date)
@@ -469,14 +484,16 @@ Partial Class ReferencesForm
         Me.Controls.Add(Me.pb_status_bar)
         Me.Controls.Add(Me.pb_status_mc)
         Me.Controls.Add(Me.pb_logo)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "ReferencesForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "ReferencesForm"
         Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox4.ResumeLayout(False)
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pb_status_bar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pb_status_mc, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pb_logo, System.ComponentModel.ISupportInitialize).EndInit()
@@ -487,7 +504,7 @@ Partial Class ReferencesForm
 
     Friend WithEvents DateTime As Timer
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txt_alarm As TextBox
     Friend WithEvents btn_home As Button
     Friend WithEvents btn_login As Button
     Friend WithEvents lbl_date As Label
@@ -523,4 +540,5 @@ Partial Class ReferencesForm
     Friend WithEvents btn_add As Button
     Friend WithEvents TextBox10 As TextBox
     Friend WithEvents Label11 As Label
+    Friend WithEvents GroupBox4 As GroupBox
 End Class

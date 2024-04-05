@@ -23,7 +23,8 @@ Partial Class LogForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(LogForm))
+        Me.txt_alarm = New System.Windows.Forms.TextBox()
         Me.lbl_date = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.lbl_curr_time = New System.Windows.Forms.Label()
@@ -32,6 +33,7 @@ Partial Class LogForm
         Me.btn_home = New System.Windows.Forms.Button()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.GroupBox_Status = New System.Windows.Forms.GroupBox()
         Me.rtb_log = New System.Windows.Forms.RichTextBox()
         Me.GroupBox_Export = New System.Windows.Forms.GroupBox()
@@ -40,6 +42,9 @@ Partial Class LogForm
         Me.txtFileLocation = New System.Windows.Forms.TextBox()
         Me.btn_export = New System.Windows.Forms.Button()
         Me.GroupBox_Filter = New System.Windows.Forms.GroupBox()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.rbNO = New System.Windows.Forms.RadioButton()
+        Me.rbNC = New System.Windows.Forms.RadioButton()
         Me.rbByREF = New System.Windows.Forms.RadioButton()
         Me.rbBydate = New System.Windows.Forms.RadioButton()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
@@ -55,33 +60,32 @@ Partial Class LogForm
         Me.pb_status_mc = New System.Windows.Forms.PictureBox()
         Me.pb_logo = New System.Windows.Forms.PictureBox()
         Me.pb_status_bar = New System.Windows.Forms.PictureBox()
-        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
-        Me.rbNO = New System.Windows.Forms.RadioButton()
-        Me.rbNC = New System.Windows.Forms.RadioButton()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
+        Me.GroupBox5.SuspendLayout()
         Me.GroupBox_Status.SuspendLayout()
         Me.GroupBox_Export.SuspendLayout()
         Me.GroupBox_Filter.SuspendLayout()
+        Me.GroupBox4.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.pb_status_mc, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pb_logo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pb_status_bar, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox4.SuspendLayout()
         Me.SuspendLayout()
         '
-        'TextBox1
+        'txt_alarm
         '
-        Me.TextBox1.BackColor = System.Drawing.Color.DarkRed
-        Me.TextBox1.Font = New System.Drawing.Font("Arial Narrow", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.ForeColor = System.Drawing.SystemColors.Window
-        Me.TextBox1.Location = New System.Drawing.Point(12, 121)
-        Me.TextBox1.Multiline = True
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(1326, 30)
-        Me.TextBox1.TabIndex = 73
-        Me.TextBox1.Text = "ALARM : . . . . . . . . "
+        Me.txt_alarm.BackColor = System.Drawing.Color.DarkRed
+        Me.txt_alarm.Font = New System.Drawing.Font("Arial Narrow", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_alarm.ForeColor = System.Drawing.SystemColors.Window
+        Me.txt_alarm.Location = New System.Drawing.Point(12, 121)
+        Me.txt_alarm.Multiline = True
+        Me.txt_alarm.Name = "txt_alarm"
+        Me.txt_alarm.ReadOnly = True
+        Me.txt_alarm.Size = New System.Drawing.Size(1326, 30)
+        Me.txt_alarm.TabIndex = 73
+        Me.txt_alarm.Text = "ALARM : . . . . . . . . "
         '
         'lbl_date
         '
@@ -158,22 +162,31 @@ Partial Class LogForm
         Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.DataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(6, 19)
+        Me.DataGridView1.Location = New System.Drawing.Point(6, 9)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(1188, 345)
+        Me.DataGridView1.Size = New System.Drawing.Size(1176, 345)
         Me.DataGridView1.TabIndex = 0
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.GroupBox5)
         Me.GroupBox1.Controls.Add(Me.GroupBox_Status)
         Me.GroupBox1.Controls.Add(Me.GroupBox_Export)
         Me.GroupBox1.Controls.Add(Me.GroupBox_Filter)
-        Me.GroupBox1.Controls.Add(Me.DataGridView1)
         Me.GroupBox1.Location = New System.Drawing.Point(138, 163)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(1200, 546)
         Me.GroupBox1.TabIndex = 74
         Me.GroupBox1.TabStop = False
+        '
+        'GroupBox5
+        '
+        Me.GroupBox5.Controls.Add(Me.DataGridView1)
+        Me.GroupBox5.Location = New System.Drawing.Point(6, 10)
+        Me.GroupBox5.Name = "GroupBox5"
+        Me.GroupBox5.Size = New System.Drawing.Size(1188, 360)
+        Me.GroupBox5.TabIndex = 25
+        Me.GroupBox5.TabStop = False
         '
         'GroupBox_Status
         '
@@ -270,6 +283,39 @@ Partial Class LogForm
         Me.GroupBox_Filter.TabIndex = 21
         Me.GroupBox_Filter.TabStop = False
         Me.GroupBox_Filter.Text = "Datalog Finder"
+        '
+        'GroupBox4
+        '
+        Me.GroupBox4.Controls.Add(Me.rbNO)
+        Me.GroupBox4.Controls.Add(Me.rbNC)
+        Me.GroupBox4.Location = New System.Drawing.Point(269, 25)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(65, 73)
+        Me.GroupBox4.TabIndex = 9
+        Me.GroupBox4.TabStop = False
+        Me.GroupBox4.Text = "Type"
+        '
+        'rbNO
+        '
+        Me.rbNO.AutoSize = True
+        Me.rbNO.Location = New System.Drawing.Point(9, 24)
+        Me.rbNO.Name = "rbNO"
+        Me.rbNO.Size = New System.Drawing.Size(46, 24)
+        Me.rbNO.TabIndex = 9
+        Me.rbNO.TabStop = True
+        Me.rbNO.Text = "NO"
+        Me.rbNO.UseVisualStyleBackColor = True
+        '
+        'rbNC
+        '
+        Me.rbNC.AutoSize = True
+        Me.rbNC.Location = New System.Drawing.Point(9, 43)
+        Me.rbNC.Name = "rbNC"
+        Me.rbNC.Size = New System.Drawing.Size(45, 24)
+        Me.rbNC.TabIndex = 10
+        Me.rbNC.TabStop = True
+        Me.rbNC.Text = "NC"
+        Me.rbNC.UseVisualStyleBackColor = True
         '
         'rbByREF
         '
@@ -388,6 +434,7 @@ Partial Class LogForm
         Me.btn_login.Text = "Login"
         Me.btn_login.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         Me.btn_login.UseVisualStyleBackColor = True
+        Me.btn_login.Visible = False
         '
         'pb_status_mc
         '
@@ -420,46 +467,13 @@ Partial Class LogForm
         Me.pb_status_bar.TabIndex = 65
         Me.pb_status_bar.TabStop = False
         '
-        'GroupBox4
-        '
-        Me.GroupBox4.Controls.Add(Me.rbNO)
-        Me.GroupBox4.Controls.Add(Me.rbNC)
-        Me.GroupBox4.Location = New System.Drawing.Point(269, 25)
-        Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(65, 73)
-        Me.GroupBox4.TabIndex = 9
-        Me.GroupBox4.TabStop = False
-        Me.GroupBox4.Text = "Type"
-        '
-        'rbNO
-        '
-        Me.rbNO.AutoSize = True
-        Me.rbNO.Location = New System.Drawing.Point(9, 24)
-        Me.rbNO.Name = "rbNO"
-        Me.rbNO.Size = New System.Drawing.Size(46, 24)
-        Me.rbNO.TabIndex = 9
-        Me.rbNO.TabStop = True
-        Me.rbNO.Text = "NO"
-        Me.rbNO.UseVisualStyleBackColor = True
-        '
-        'rbNC
-        '
-        Me.rbNC.AutoSize = True
-        Me.rbNC.Location = New System.Drawing.Point(9, 43)
-        Me.rbNC.Name = "rbNC"
-        Me.rbNC.Size = New System.Drawing.Size(45, 24)
-        Me.rbNC.TabIndex = 10
-        Me.rbNC.TabStop = True
-        Me.rbNC.Text = "NC"
-        Me.rbNC.UseVisualStyleBackColor = True
-        '
         'LogForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1350, 729)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.txt_alarm)
         Me.Controls.Add(Me.lbl_date)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.lbl_curr_time)
@@ -471,16 +485,20 @@ Partial Class LogForm
         Me.Controls.Add(Me.pb_status_mc)
         Me.Controls.Add(Me.pb_logo)
         Me.Controls.Add(Me.pb_status_bar)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "LogForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "LogForm"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox5.ResumeLayout(False)
         Me.GroupBox_Status.ResumeLayout(False)
         Me.GroupBox_Export.ResumeLayout(False)
         Me.GroupBox_Export.PerformLayout()
         Me.GroupBox_Filter.ResumeLayout(False)
         Me.GroupBox_Filter.PerformLayout()
+        Me.GroupBox4.ResumeLayout(False)
+        Me.GroupBox4.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
@@ -488,14 +506,12 @@ Partial Class LogForm
         CType(Me.pb_status_mc, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pb_logo, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pb_status_bar, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox4.ResumeLayout(False)
-        Me.GroupBox4.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txt_alarm As TextBox
     Friend WithEvents lbl_date As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents lbl_curr_time As Label
@@ -530,4 +546,5 @@ Partial Class LogForm
     Friend WithEvents GroupBox4 As GroupBox
     Friend WithEvents rbNO As RadioButton
     Friend WithEvents rbNC As RadioButton
+    Friend WithEvents GroupBox5 As GroupBox
 End Class

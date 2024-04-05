@@ -23,8 +23,9 @@ Partial Class SettingForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SettingForm))
         Me.DateTime = New System.Windows.Forms.Timer(Me.components)
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txt_alarm = New System.Windows.Forms.TextBox()
         Me.lbl_date = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.lbl_curr_time = New System.Windows.Forms.Label()
@@ -87,17 +88,18 @@ Partial Class SettingForm
         '
         Me.DateTime.Enabled = True
         '
-        'TextBox1
+        'txt_alarm
         '
-        Me.TextBox1.BackColor = System.Drawing.Color.DarkRed
-        Me.TextBox1.Font = New System.Drawing.Font("Arial Narrow", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.ForeColor = System.Drawing.SystemColors.Window
-        Me.TextBox1.Location = New System.Drawing.Point(12, 121)
-        Me.TextBox1.Multiline = True
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(1326, 30)
-        Me.TextBox1.TabIndex = 85
-        Me.TextBox1.Text = "ALARM : . . . . . . . . "
+        Me.txt_alarm.BackColor = System.Drawing.Color.DarkRed
+        Me.txt_alarm.Font = New System.Drawing.Font("Arial Narrow", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_alarm.ForeColor = System.Drawing.SystemColors.Window
+        Me.txt_alarm.Location = New System.Drawing.Point(12, 121)
+        Me.txt_alarm.Multiline = True
+        Me.txt_alarm.Name = "txt_alarm"
+        Me.txt_alarm.ReadOnly = True
+        Me.txt_alarm.Size = New System.Drawing.Size(1326, 30)
+        Me.txt_alarm.TabIndex = 85
+        Me.txt_alarm.Text = "ALARM : . . . . . . . . "
         '
         'lbl_date
         '
@@ -185,6 +187,7 @@ Partial Class SettingForm
         '
         Me.rtb_setting.Location = New System.Drawing.Point(8, 25)
         Me.rtb_setting.Name = "rtb_setting"
+        Me.rtb_setting.ReadOnly = True
         Me.rtb_setting.Size = New System.Drawing.Size(402, 138)
         Me.rtb_setting.TabIndex = 0
         Me.rtb_setting.Text = ""
@@ -520,6 +523,7 @@ Partial Class SettingForm
         Me.btn_login.Text = "Login"
         Me.btn_login.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         Me.btn_login.UseVisualStyleBackColor = True
+        Me.btn_login.Visible = False
         '
         'pb_status_mc
         '
@@ -585,7 +589,7 @@ Partial Class SettingForm
         Me.Controls.Add(Me.btn_login)
         Me.Controls.Add(Me.pb_status_mc)
         Me.Controls.Add(Me.pb_logo)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.txt_alarm)
         Me.Controls.Add(Me.lbl_date)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.lbl_curr_time)
@@ -595,6 +599,7 @@ Partial Class SettingForm
         Me.Controls.Add(Me.btn_home)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.pb_status_bar)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "SettingForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "SettingForm"
@@ -620,7 +625,7 @@ Partial Class SettingForm
     Friend WithEvents pb_logo As PictureBox
     Friend WithEvents pb_status_bar As PictureBox
     Friend WithEvents DateTime As Timer
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txt_alarm As TextBox
     Friend WithEvents lbl_date As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents lbl_curr_time As Label

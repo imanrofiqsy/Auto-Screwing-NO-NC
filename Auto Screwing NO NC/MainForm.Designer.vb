@@ -24,7 +24,7 @@ Partial Class MainForm
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainForm))
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txt_alarm = New System.Windows.Forms.TextBox()
         Me.lbl_date = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.lbl_curr_time = New System.Windows.Forms.Label()
@@ -82,17 +82,18 @@ Partial Class MainForm
         CType(Me.dgv_temp, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'TextBox1
+        'txt_alarm
         '
-        Me.TextBox1.BackColor = System.Drawing.Color.DarkRed
-        Me.TextBox1.Font = New System.Drawing.Font("Arial Narrow", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.ForeColor = System.Drawing.SystemColors.Window
-        Me.TextBox1.Location = New System.Drawing.Point(12, 121)
-        Me.TextBox1.Multiline = True
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(1326, 30)
-        Me.TextBox1.TabIndex = 26
-        Me.TextBox1.Text = "ALARM : . . . . . . . . "
+        Me.txt_alarm.BackColor = System.Drawing.Color.DarkRed
+        Me.txt_alarm.Font = New System.Drawing.Font("Arial Narrow", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_alarm.ForeColor = System.Drawing.SystemColors.Window
+        Me.txt_alarm.Location = New System.Drawing.Point(12, 121)
+        Me.txt_alarm.Multiline = True
+        Me.txt_alarm.Name = "txt_alarm"
+        Me.txt_alarm.ReadOnly = True
+        Me.txt_alarm.Size = New System.Drawing.Size(1326, 30)
+        Me.txt_alarm.TabIndex = 26
+        Me.txt_alarm.Text = "ALARM : . . . . . . . . "
         '
         'lbl_date
         '
@@ -250,6 +251,7 @@ Partial Class MainForm
         Me.rtb_status_nc.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.rtb_status_nc.Location = New System.Drawing.Point(6, 25)
         Me.rtb_status_nc.Name = "rtb_status_nc"
+        Me.rtb_status_nc.ReadOnly = True
         Me.rtb_status_nc.Size = New System.Drawing.Size(447, 96)
         Me.rtb_status_nc.TabIndex = 0
         Me.rtb_status_nc.Text = ""
@@ -350,6 +352,7 @@ Partial Class MainForm
         Me.rtb_status_no.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.rtb_status_no.Location = New System.Drawing.Point(6, 25)
         Me.rtb_status_no.Name = "rtb_status_no"
+        Me.rtb_status_no.ReadOnly = True
         Me.rtb_status_no.Size = New System.Drawing.Size(447, 96)
         Me.rtb_status_no.TabIndex = 0
         Me.rtb_status_no.Text = ""
@@ -566,6 +569,7 @@ Partial Class MainForm
         Me.dgv_temp.Name = "dgv_temp"
         Me.dgv_temp.Size = New System.Drawing.Size(44, 31)
         Me.dgv_temp.TabIndex = 28
+        Me.dgv_temp.Visible = False
         '
         'StartDate
         '
@@ -573,6 +577,7 @@ Partial Class MainForm
         Me.StartDate.Name = "StartDate"
         Me.StartDate.Size = New System.Drawing.Size(200, 20)
         Me.StartDate.TabIndex = 29
+        Me.StartDate.Visible = False
         '
         'EndDate
         '
@@ -580,6 +585,7 @@ Partial Class MainForm
         Me.EndDate.Name = "EndDate"
         Me.EndDate.Size = New System.Drawing.Size(200, 20)
         Me.EndDate.TabIndex = 29
+        Me.EndDate.Visible = False
         '
         'MainForm
         '
@@ -591,7 +597,7 @@ Partial Class MainForm
         Me.Controls.Add(Me.StartDate)
         Me.Controls.Add(Me.dgv_temp)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.txt_alarm)
         Me.Controls.Add(Me.btn_st6)
         Me.Controls.Add(Me.btn_setting)
         Me.Controls.Add(Me.btn_st5)
@@ -613,6 +619,7 @@ Partial Class MainForm
         Me.Controls.Add(Me.pb_status_bar)
         Me.Controls.Add(Me.pb_status_mc)
         Me.Controls.Add(Me.pb_logo)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "MainForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Auto Screwing NO NC"
@@ -632,7 +639,7 @@ Partial Class MainForm
 
     End Sub
 
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txt_alarm As TextBox
     Friend WithEvents btn_st6 As Button
     Friend WithEvents btn_setting As Button
     Friend WithEvents btn_st5 As Button

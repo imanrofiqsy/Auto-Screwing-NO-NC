@@ -197,6 +197,16 @@
 
     Private Sub ManualForm_Load(sender As Object, e As EventArgs) Handles Me.Load
         qr_file_location.Text = labelPath
+
+        With Alarm
+            If .PlcNc <> "" Then
+                txt_alarm.Text = "ALARM : " + .PlcNc
+            ElseIf .PlcNo <> "" Then
+                txt_alarm.Text = "ALARM : " + .PlcNo
+            Else
+                txt_alarm.Text = "ALARM : . . . ."
+            End If
+        End With
     End Sub
 
     Private Sub showhide_qr_designer_Click(sender As Object, e As EventArgs) Handles showhide_qr_designer.Click

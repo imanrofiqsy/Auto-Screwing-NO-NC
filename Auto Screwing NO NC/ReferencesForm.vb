@@ -7,13 +7,17 @@ Public Class ReferencesForm
     End Sub
 
     Private Sub btn_home_Click(sender As Object, e As EventArgs) Handles btn_home.Click
-        Hide()
+        Close()
         MainForm.Show()
     End Sub
 
     Private Sub ReferencesForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        DataGridView1.ColumnHeadersDefaultCellStyle.Font = New Font("Arial", 12)
-        DataGridView1.DefaultCellStyle.Font = New Font("Arial", 12)
+        DataGridView1.ColumnHeadersDefaultCellStyle.Font = New Font("Arial", 15)
+        DataGridView1.DefaultCellStyle.Font = New Font("Arial", 15)
+        DataGridView1.Dock = DockStyle.Fill
+        DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        GetUserLevel()
+
         Try
             LoadRef()
             rtb_references.SelectionColor = Color.Black
@@ -24,6 +28,27 @@ Public Class ReferencesForm
             rtb_references.AppendText(Date.Now.ToString("dd/MM/yyyy - hh:mm:ss ") + "[References] Failed load references " + ex.Message + Environment.NewLine)
             rtb_references.ScrollToCaret()
         End Try
+
+        With Alarm
+            If .PlcNc <> "" Then
+                txt_alarm.Text = "ALARM : " + .PlcNc
+            ElseIf .PlcNo <> "" Then
+                txt_alarm.Text = "ALARM : " + .PlcNo
+            Else
+                txt_alarm.Text = "ALARM : . . . ."
+            End If
+        End With
+    End Sub
+    Private Sub GetUserLevel()
+        If UserLevel = 1 Then
+            lbl_user.Text = "ADM"
+        ElseIf UserLevel = 2 Then
+            lbl_user.Text = "ENG"
+        ElseIf UserLevel = 3 Then
+            lbl_user.Text = "OPE"
+        ElseIf UserLevel = 4 Then
+            lbl_user.Text = "QUA"
+        End If
     End Sub
 
     Private Sub DataGridView1_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellDoubleClick

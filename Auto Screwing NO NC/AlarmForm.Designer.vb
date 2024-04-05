@@ -23,7 +23,8 @@ Partial Class AlarmForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AlarmForm))
+        Me.txt_alarm = New System.Windows.Forms.TextBox()
         Me.lbl_date = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.lbl_curr_time = New System.Windows.Forms.Label()
@@ -44,17 +45,18 @@ Partial Class AlarmForm
         CType(Me.pb_status_bar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'TextBox1
+        'txt_alarm
         '
-        Me.TextBox1.BackColor = System.Drawing.Color.DarkRed
-        Me.TextBox1.Font = New System.Drawing.Font("Arial Narrow", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.ForeColor = System.Drawing.SystemColors.Window
-        Me.TextBox1.Location = New System.Drawing.Point(12, 121)
-        Me.TextBox1.Multiline = True
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(1326, 30)
-        Me.TextBox1.TabIndex = 61
-        Me.TextBox1.Text = "ALARM : . . . . . . . . "
+        Me.txt_alarm.BackColor = System.Drawing.Color.DarkRed
+        Me.txt_alarm.Font = New System.Drawing.Font("Arial Narrow", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_alarm.ForeColor = System.Drawing.SystemColors.Window
+        Me.txt_alarm.Location = New System.Drawing.Point(12, 121)
+        Me.txt_alarm.Multiline = True
+        Me.txt_alarm.Name = "txt_alarm"
+        Me.txt_alarm.ReadOnly = True
+        Me.txt_alarm.Size = New System.Drawing.Size(1326, 30)
+        Me.txt_alarm.TabIndex = 61
+        Me.txt_alarm.Text = "ALARM : . . . . . . . . "
         '
         'lbl_date
         '
@@ -116,6 +118,8 @@ Partial Class AlarmForm
         '
         'DataGridView1
         '
+        Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
+        Me.DataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Location = New System.Drawing.Point(6, 19)
         Me.DataGridView1.Name = "DataGridView1"
@@ -137,7 +141,6 @@ Partial Class AlarmForm
         '
         'btn_login
         '
-        Me.btn_login.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_login.Font = New System.Drawing.Font("Arial Narrow", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_login.Image = Global.MASTER.My.Resources.Resources.icons8_change_user_50
         Me.btn_login.Location = New System.Drawing.Point(1101, 20)
@@ -147,10 +150,10 @@ Partial Class AlarmForm
         Me.btn_login.Text = "Login"
         Me.btn_login.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         Me.btn_login.UseVisualStyleBackColor = True
+        Me.btn_login.Visible = False
         '
         'pb_status_mc
         '
-        Me.pb_status_mc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.pb_status_mc.Image = Global.MASTER.My.Resources.Resources.mark_ok
         Me.pb_status_mc.Location = New System.Drawing.Point(967, 20)
         Me.pb_status_mc.Name = "pb_status_mc"
@@ -161,8 +164,7 @@ Partial Class AlarmForm
         '
         'pb_logo
         '
-        Me.pb_logo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.pb_logo.Image = Global.MASTER.My.Resources.Resources.logo_sanindo_tekno_batam
+        Me.pb_logo.Image = Global.MASTER.My.Resources.Resources.GUI___Sch
         Me.pb_logo.Location = New System.Drawing.Point(12, 20)
         Me.pb_logo.Name = "pb_logo"
         Me.pb_logo.Size = New System.Drawing.Size(250, 85)
@@ -183,7 +185,6 @@ Partial Class AlarmForm
         '
         'btn_home
         '
-        Me.btn_home.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_home.Font = New System.Drawing.Font("Arial Narrow", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_home.Image = Global.MASTER.My.Resources.Resources.icons8_home_50
         Me.btn_home.Location = New System.Drawing.Point(12, 169)
@@ -203,7 +204,7 @@ Partial Class AlarmForm
         Me.Controls.Add(Me.btn_login)
         Me.Controls.Add(Me.pb_status_mc)
         Me.Controls.Add(Me.pb_logo)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.txt_alarm)
         Me.Controls.Add(Me.lbl_date)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.lbl_curr_time)
@@ -212,6 +213,7 @@ Partial Class AlarmForm
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.btn_home)
         Me.Controls.Add(Me.pb_status_bar)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "AlarmForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "AlarmForm"
@@ -229,7 +231,7 @@ Partial Class AlarmForm
     Friend WithEvents pb_status_mc As PictureBox
     Friend WithEvents pb_logo As PictureBox
     Friend WithEvents pb_status_bar As PictureBox
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txt_alarm As TextBox
     Friend WithEvents lbl_date As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents lbl_curr_time As Label
